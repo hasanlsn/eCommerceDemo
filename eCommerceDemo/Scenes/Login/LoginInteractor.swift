@@ -10,13 +10,14 @@ import Foundation
 
 protocol LoginBusinessLogic: AnyObject { 
     func viewDidLoad()
+    func didTapLogin(request: Login.Phone.Request)
 }
 
 protocol LoginDataStore: AnyObject { }
 
 final class LoginInteractor {
     var presenter: LoginPresentationLogic?
-    var worker: LoginWorker?
+    private lazy var worker = LoginWorker()
 }
 
 // MARK: - LoginBusinessLogic -
@@ -25,6 +26,26 @@ extension LoginInteractor: LoginBusinessLogic, LoginDataStore {
     func viewDidLoad() {
         
     }
+    
+    func didTapLogin(request: Login.Phone.Request) {
+        self.login(phone: request.phone)
+    }
 }
 
 //
+
+extension LoginInteractor {
+    private func login(phone: String) {
+        self.worker.login(phone: phone) { [weak self] result in
+            switch result {
+            case .success(let loginResponseModel):
+                let loginInfo = loginResponseModel.toJSONString() ?? ""
+                self?.worker.saveLoginInfo(info: loginInfo)
+                
+                self?.presenter?.presentLoginFinish()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+}

@@ -8,7 +8,9 @@
 
 import Foundation
 
-protocol LoginPresentationLogic: AnyObject { }
+protocol LoginPresentationLogic: AnyObject {
+    func presentLoginFinish()
+}
 
 final class LoginPresenter {
     weak var viewController: LoginDisplayLogic?
@@ -16,6 +18,10 @@ final class LoginPresenter {
 
 // MARK: - LoginPresentationLogic -
 
-extension LoginPresenter: LoginPresentationLogic { }
+extension LoginPresenter: LoginPresentationLogic {
+    func presentLoginFinish() {
+        self.viewController?.displayLoginFinish()
+    }
+}
 
 //

@@ -92,6 +92,9 @@
 		16C6A53C2B115760004ACE5C /* UIImageExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C6A53B2B115760004ACE5C /* UIImageExt.swift */; };
 		16C6A53E2B115AB3004ACE5C /* UITextFieldExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C6A53D2B115AB3004ACE5C /* UITextFieldExt.swift */; };
 		16C6A5412B115DE3004ACE5C /* AnyFormatKit in Frameworks */ = {isa = PBXBuildFile; productRef = 16C6A5402B115DE3004ACE5C /* AnyFormatKit */; };
+		16C6A5442B11605B004ACE5C /* LoginResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C6A5432B11605B004ACE5C /* LoginResponseModel.swift */; };
+		16C6A5472B1161E6004ACE5C /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 16C6A5462B1161E6004ACE5C /* KeychainAccess */; };
+		16C6A5492B1161F0004ACE5C /* HKeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C6A5482B1161F0004ACE5C /* HKeychainManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -197,6 +200,8 @@
 		16C6A5392B11527A004ACE5C /* PrimaryTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryTextField.swift; sourceTree = "<group>"; };
 		16C6A53B2B115760004ACE5C /* UIImageExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExt.swift; sourceTree = "<group>"; };
 		16C6A53D2B115AB3004ACE5C /* UITextFieldExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExt.swift; sourceTree = "<group>"; };
+		16C6A5432B11605B004ACE5C /* LoginResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseModel.swift; sourceTree = "<group>"; };
+		16C6A5482B1161F0004ACE5C /* HKeychainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKeychainManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +213,7 @@
 				16C6A5412B115DE3004ACE5C /* AnyFormatKit in Frameworks */,
 				161E40552B0F84300007D793 /* Kingfisher in Frameworks */,
 				161E403D2B0F78DA0007D793 /* Alamofire in Frameworks */,
+				16C6A5472B1161E6004ACE5C /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +486,7 @@
 			children = (
 				161E404F2B0F7C870007D793 /* HConstants.swift */,
 				16C6A5192B111F1C004ACE5C /* HAppearance.swift */,
+				16C6A5482B1161F0004ACE5C /* HKeychainManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -525,6 +532,7 @@
 		16C6A5262B114AF3004ACE5C /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				16C6A5422B116048004ACE5C /* Models */,
 				16C6A5272B114B00004ACE5C /* LoginPresenter.swift */,
 				16C6A5282B114B00004ACE5C /* LoginWorker.swift */,
 				16C6A5292B114B00004ACE5C /* LoginRouter.swift */,
@@ -533,6 +541,14 @@
 				16C6A52C2B114B00004ACE5C /* LoginInteractor.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		16C6A5422B116048004ACE5C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				16C6A5432B11605B004ACE5C /* LoginResponseModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -556,6 +572,7 @@
 				161E40542B0F84300007D793 /* Kingfisher */,
 				161E40662B0F8FDA0007D793 /* SnapKit */,
 				16C6A5402B115DE3004ACE5C /* AnyFormatKit */,
+				16C6A5462B1161E6004ACE5C /* KeychainAccess */,
 			);
 			productName = eCommerceDemo;
 			productReference = 161E40082B0F60DB0007D793 /* eCommerceDemo.app */;
@@ -635,6 +652,7 @@
 				161E40532B0F84300007D793 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				161E40652B0F8FDA0007D793 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				16C6A53F2B115DE3004ACE5C /* XCRemoteSwiftPackageReference "AnyFormatKit" */,
+				16C6A5452B1161E5004ACE5C /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = 161E40092B0F60DB0007D793 /* Products */;
 			projectDirPath = "";
@@ -742,11 +760,13 @@
 				161E40D02B0FDD250007D793 /* OfferProductItemCell.swift in Sources */,
 				16C6A52E2B114B00004ACE5C /* LoginPresenter.swift in Sources */,
 				16C6A50D2B1100FD004ACE5C /* IntrinsicCollectionView.swift in Sources */,
+				16C6A5492B1161F0004ACE5C /* HKeychainManager.swift in Sources */,
 				161E407D2B0F91F40007D793 /* MyWalletResponseModel.swift in Sources */,
 				161E40912B0FAE060007D793 /* UICollectionViewExt.swift in Sources */,
 				16C6A5302B114B00004ACE5C /* LoginRouter.swift in Sources */,
 				161E40932B0FCDDA0007D793 /* UIIMageViewExt.swift in Sources */,
 				16C6A5252B113F3C004ACE5C /* StringExt.swift in Sources */,
+				16C6A5442B11605B004ACE5C /* LoginResponseModel.swift in Sources */,
 				16C6A53A2B11527A004ACE5C /* PrimaryTextField.swift in Sources */,
 				16C6A5162B11096B004ACE5C /* BrandBannersView.swift in Sources */,
 				161E407F2B0F92060007D793 /* ProductOfferResponseModel.swift in Sources */,
@@ -1123,6 +1143,14 @@
 				minimumVersion = 2.5.2;
 			};
 		};
+		16C6A5452B1161E5004ACE5C /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1145,6 +1173,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 16C6A53F2B115DE3004ACE5C /* XCRemoteSwiftPackageReference "AnyFormatKit" */;
 			productName = AnyFormatKit;
+		};
+		16C6A5462B1161E6004ACE5C /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16C6A5452B1161E5004ACE5C /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

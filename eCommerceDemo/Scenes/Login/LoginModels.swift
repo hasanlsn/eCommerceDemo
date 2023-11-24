@@ -11,9 +11,9 @@ import Foundation
 enum Login {
     // MARK: - Use cases -
     
-    enum Something {
+    enum Phone {
         struct Request {
-            
+            let phone: String
         }
         
         struct Response {

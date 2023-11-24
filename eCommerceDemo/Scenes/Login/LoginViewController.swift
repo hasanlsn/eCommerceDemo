@@ -8,7 +8,9 @@
 
 import UIKit
 
-protocol LoginDisplayLogic: AnyObject { }
+protocol LoginDisplayLogic: AnyObject {
+    func displayLoginFinish()
+}
 
 final class LoginViewController: BaseViewController {
     // MARK: - IBOutlets -
@@ -45,6 +47,7 @@ final class LoginViewController: BaseViewController {
         button.isEnabled = false
         button.setTitle("Giriş Yap", for: .disabled)
         button.setTitle("Devam Et", for: .normal)
+        button.addTarget(self, action: #selector(self.handleContinueAction), for: .touchUpInside)
         return button
     }()
     
@@ -91,6 +94,12 @@ final class LoginViewController: BaseViewController {
         self.interactor?.viewDidLoad()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.phoneTextField.becomeFirstResponder()
+    }
+    
     //
     
     // MARK: - Helpers -
@@ -125,12 +134,26 @@ final class LoginViewController: BaseViewController {
         self.dismiss(animated: true)
     }
     
+    @objc
+    private func handleContinueAction() {
+        guard let phone = self.phoneTextField.text else {
+            return
+        }
+        
+        let request = Login.Phone.Request(phone: phone)
+        self.interactor?.didTapLogin(request: request)
+    }
+    
     //
 }
 
 // MARK: - LoginDisplayLogic -
 
-extension LoginViewController: LoginDisplayLogic { }
+extension LoginViewController: LoginDisplayLogic {
+    func displayLoginFinish() {
+        self.dismiss(animated: true)
+    }
+}
 
 //
 

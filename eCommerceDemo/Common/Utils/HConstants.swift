@@ -13,7 +13,7 @@ struct HConstants {
     static let API_URL_DEV = "https:\(HConstants.API_HOST_DEV)"
     
     struct Keychain {
-        static var USER_PROFILE_INFO = "USER_PROFILE_INFO_KEY"
+        static var LOGIN_INFO_KEY = "LOGIN_INFO_KEY"
     }
     
     struct TextFormatter {

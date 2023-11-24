@@ -8,4 +8,18 @@
 
 import Foundation
 
-final class LoginWorker { }
+protocol LoginWork {
+    func login(phone: String, completion: RequestCompletionBlock<LoginResponseModel>)
+    func saveLoginInfo(info: String)
+}
+
+final class LoginWorker {
+    func login(phone: String, completion: RequestCompletionBlock<LoginResponseModel>) {
+        HNetworkManager.shared.sendRequest(with: AuthEndpoint.login,
+                                           completion: completion)
+    }
+    
+    func saveLoginInfo(info: String) {
+        HKeychainManager.setString(item: info, forKey: HConstants.Keychain.LOGIN_INFO_KEY)
+    }
+}
