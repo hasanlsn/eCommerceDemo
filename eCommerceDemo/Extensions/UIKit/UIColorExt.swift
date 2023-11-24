@@ -9,11 +9,14 @@
 import UIKit
 
 extension UIColor {
-    static let davysGrey = UIColor(named: "DavysGrey")!
-    static let darkCharcoal = UIColor(named: "DarkCharcoal")!
-    static let minionYellow = UIColor(named: "MinionYellow")!
-    static let usafaBlue = UIColor(named: "USAFABlue")!
-    static let venetianRed = UIColor(named: "VenetianRed")!
+    static let color555555 = UIColor(named: "Color555555")!
+    static let color333333 = UIColor(named: "Color333333")!
+    static let colorFAE14B = UIColor(named: "ColorFAE14B")!
+    static let color0551A0 = UIColor(named: "Color0551A0")!
+    static let colorCC1512 = UIColor(named: "ColorCC1512")!
+    static let colorB0B9C1 = UIColor(named: "ColorB0B9C1")!
+    static let color777777 = UIColor(named: "Color777777")!
+    static let colorCCCCCC = UIColor(named: "ColorCCCCCC")!
     
     static func colorFromHex(hex: String?, alpha: CGFloat = 1.0) -> UIColor? {
         guard let hex else {

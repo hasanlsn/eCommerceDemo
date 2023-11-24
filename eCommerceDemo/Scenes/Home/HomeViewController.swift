@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import SnapKit
 
 protocol HomeDisplayLogic: AnyObject {
     
 }
 
-final class HomeViewController: UIViewController {
+final class HomeViewController: BaseViewController {
     // MARK: - IBOutlets -
     
     //
@@ -25,6 +26,33 @@ final class HomeViewController: UIViewController {
     //
     
     // MARK: - Private Properties -
+    
+    private lazy var containerScrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.alwaysBounceVertical = true
+        return scrollView
+    }()
+    
+    private lazy var containerStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        return stackView
+    }()
+    
+    private lazy var categoriesView: CategoriesView = {
+        let categoriesView = CategoriesView()
+        return categoriesView
+    }()
+    
+    private lazy var productOffersView: ProductOffersView = {
+        let offersView = ProductOffersView()
+        return offersView
+    }()
+    
+    private lazy var brandBannersView: BrandBannersView = {
+        let bannersView = BrandBannersView()
+        return bannersView
+    }()
     
     //
     
@@ -69,12 +97,33 @@ final class HomeViewController: UIViewController {
         self.interactor?.viewDidLoad()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.router?.navigate(to: .login)
+    }
+    
     //
     
     // MARK: - Helpers -
     
     private func prepareViews() {
+        self.view.backgroundColor = .white
         
+        self.view.addSubview(self.containerScrollView)
+        self.containerScrollView.addSubview(self.containerStackView)
+        self.containerStackView.addArrangedSubview(self.categoriesView)
+        self.containerStackView.addArrangedSubview(self.productOffersView)
+        self.containerStackView.addArrangedSubview(self.brandBannersView)
+        
+        self.containerScrollView.snp.makeConstraints {
+            $0.trailing.leading.top.bottom.equalToSuperview()
+        }
+        self.containerStackView.snp.makeConstraints {
+            $0.trailing.leading.top.bottom.equalToSuperview()
+            $0.width.equalTo(self.view.snp.width)
+            $0.height.equalTo(self.view.snp.height).priority(.low)
+        }
     }
     
     //
@@ -87,7 +136,7 @@ final class HomeViewController: UIViewController {
 // MARK: - HomeDisplayLogic -
 
 extension HomeViewController: HomeDisplayLogic {
-    
+
 }
 
 //

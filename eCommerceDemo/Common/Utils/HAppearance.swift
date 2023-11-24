@@ -10,7 +10,7 @@ import UIKit
 class HAppearance: NSObject {
     static func updateGlobalViewAppearance() {
         // navigation bar
-        HAppearance.setNavigationBarAppearance(bgColor: UIColor.minionYellow)
+        HAppearance.setNavigationBarAppearance(bgColor: UIColor.colorFAE14B)
     }
     
     private static func setNavigationBarAppearance(bgColor: UIColor) {
@@ -18,7 +18,7 @@ class HAppearance: NSObject {
             let navigationBarAppearance = UINavigationBarAppearance()
             navigationBarAppearance.configureWithOpaqueBackground()
             navigationBarAppearance.titleTextAttributes = [
-                .foregroundColor: UIColor.white,
+                .foregroundColor: UIColor.color333333,
                 .font: UIFont(.jostBold, size: 18)
             ]
             navigationBarAppearance.backgroundColor = bgColor
@@ -26,12 +26,12 @@ class HAppearance: NSObject {
             UINavigationBar.appearance().compactAppearance = navigationBarAppearance
             UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         } else {
-            UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white,
+            UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.color333333,
                                                                 .font: UIFont(.jostBold, size: 18)]
             UINavigationBar.appearance().barTintColor = bgColor
         }
         
         UINavigationBar.appearance().isTranslucent = false
-        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().tintColor = .color333333
     }
 }

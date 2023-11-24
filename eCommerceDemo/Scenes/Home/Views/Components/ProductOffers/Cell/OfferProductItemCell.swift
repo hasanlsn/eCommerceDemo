@@ -22,7 +22,7 @@ class OfferProductItemCell: UICollectionViewCell {
         let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont(.jostMedium, size: 12)
-        label.textColor = UIColor.darkCharcoal
+        label.textColor = UIColor.color333333
         label.numberOfLines = 2
         return label
     }()

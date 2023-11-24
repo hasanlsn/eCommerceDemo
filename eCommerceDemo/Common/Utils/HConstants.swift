@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AnyFormatKit
 
 struct HConstants {
     static let API_HOST_DEV = "demo5416316.mockable.io"
@@ -13,5 +14,9 @@ struct HConstants {
     
     struct Keychain {
         static var USER_PROFILE_INFO = "USER_PROFILE_INFO_KEY"
+    }
+    
+    struct TextFormatter {
+        static let TURKEY_PHONE_NUMBER_FORMATTER = DefaultTextInputFormatter(textPattern: "### ### ## ##")
     }
 }

@@ -13,7 +13,7 @@ class PriceView: UIView {
     
     private lazy var innerContainerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .minionYellow
+        view.backgroundColor = .colorFAE14B
         view.roundCorners(radius: 2)
         return view
     }()
@@ -27,7 +27,7 @@ class PriceView: UIView {
     
     private lazy var originalPriceContainerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .venetianRed
+        view.backgroundColor = .colorCC1512
         view.roundCorners(radius: 2)
         return view
     }()
@@ -36,7 +36,7 @@ class PriceView: UIView {
         let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont(.jostRegular, size: 10)
-        label.textColor = UIColor.minionYellow
+        label.textColor = UIColor.colorFAE14B
         return label
     }()
     
@@ -50,7 +50,7 @@ class PriceView: UIView {
         let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont(.jostBold, size: 12)
-        label.textColor = UIColor.venetianRed
+        label.textColor = UIColor.colorCC1512
         return label
     }()
     
@@ -110,7 +110,7 @@ class LeaningLineView: UIView {
     override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
         context?.setLineWidth(1.0)
-        context?.setStrokeColor(UIColor.usafaBlue.cgColor)
+        context?.setStrokeColor(UIColor.color0551A0.cgColor)
         context?.move(to: CGPoint(x: rect.minX, y: rect.maxY))
         context?.addLine (to: CGPoint(x: rect.maxX, y: rect.minY))
         context?.strokePath()

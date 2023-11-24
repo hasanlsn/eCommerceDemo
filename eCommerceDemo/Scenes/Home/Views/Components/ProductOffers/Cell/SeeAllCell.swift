@@ -16,7 +16,7 @@ class SeeAllCell: UICollectionViewCell {
         imageView.backgroundColor = .clear
         imageView.clipsToBounds = true
         imageView.image = UIImage(systemName: "arrow.forward")
-        imageView.tintColor = UIColor.usafaBlue
+        imageView.tintColor = UIColor.color0551A0
         return imageView
     }()
     
@@ -24,7 +24,7 @@ class SeeAllCell: UICollectionViewCell {
         let label = UILabel()
         label.textAlignment = .left
         label.font = UIFont(.jostBold, size: 18)
-        label.textColor = UIColor.usafaBlue
+        label.textColor = UIColor.color0551A0
         label.text = "Tümünü Gör"
         return label
     }()

@@ -21,7 +21,7 @@ class BrandBannerItemCell: UICollectionViewCell {
     private lazy var brandNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(.jostBold, size: 20)
-        label.textColor = UIColor.darkCharcoal
+        label.textColor = UIColor.color333333
         label.numberOfLines = 2
         return label
     }()
@@ -29,7 +29,7 @@ class BrandBannerItemCell: UICollectionViewCell {
     private lazy var brandDescLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(.jostRegular, size: 12)
-        label.textColor = UIColor.darkCharcoal
+        label.textColor = UIColor.color333333
         label.numberOfLines = 3
         return label
     }()

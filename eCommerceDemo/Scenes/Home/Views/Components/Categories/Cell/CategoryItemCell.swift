@@ -21,7 +21,7 @@ class CategoryItemCell: UICollectionViewCell {
         let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont(.jostMedium, size: 11)
-        label.textColor = UIColor.davysGrey
+        label.textColor = UIColor.color555555
         label.numberOfLines = 2
         return label
     }()
