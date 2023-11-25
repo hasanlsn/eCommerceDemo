@@ -30,10 +30,9 @@ class PrimaryButton: UIButton {
         self.commonInit()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        
-        self.commonInit()
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func commonInit() {

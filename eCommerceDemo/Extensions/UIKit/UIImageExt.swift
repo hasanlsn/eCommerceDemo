@@ -13,4 +13,6 @@ extension UIImage {
     static let appLogo = UIImage(named: "app_logo")!
     static let wallet = UIImage(named: "wallet")!
     static let walletBg = UIImage(named: "wallet_bg")!
+    static let pageIndicator = UIImage(named: "page_indicator")!
+    static let selectedPageIndicator = UIImage(named: "selected_page_indicator")!
 }

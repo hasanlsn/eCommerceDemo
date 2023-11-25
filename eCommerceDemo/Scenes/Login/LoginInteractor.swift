@@ -17,7 +17,7 @@ protocol LoginDataStore: AnyObject { }
 
 final class LoginInteractor {
     var presenter: LoginPresentationLogic?
-    private lazy var worker = LoginWorker()
+    private lazy var worker: LoginWorkProtocol = LoginWorker()
 }
 
 // MARK: - LoginBusinessLogic -

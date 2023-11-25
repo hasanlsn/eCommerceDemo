@@ -16,7 +16,7 @@ protocol HomeDataStore: AnyObject { }
 
 final class HomeInteractor {
     var presenter: HomePresentationLogic?
-    private lazy var worker = HomeWorker()
+    private lazy var worker: HomeWorkProtocol = HomeWorker()
 }
 
 // MARK: - HomeBusinessLogic -

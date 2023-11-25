@@ -10,6 +10,7 @@ import UIKit
 
 enum HomeNavigationOption {
     case login
+    case productDetail
 }
 
 protocol HomeRoutingLogic { 
@@ -35,6 +36,9 @@ extension HomeRouter: HomeRoutingLogic {
             let nav = BaseNavigationController(rootViewController: destinationVC)
             nav.modalPresentationStyle = .fullScreen
             self.viewController?.present(nav, animated: true)
+        case .productDetail:
+            let destinationVC = ProductDetailViewController()
+            self.viewController?.navigationController?.pushViewController(destinationVC, animated: true)
         }
     }
 }

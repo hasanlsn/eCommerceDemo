@@ -109,6 +109,12 @@ final class HomeViewController: BaseViewController {
         self.interactor?.viewDidLoad()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.router?.navigate(to: .productDetail)
+    }
+    
     //
     
     // MARK: - Helpers -

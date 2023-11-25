@@ -8,12 +8,12 @@
 
 import Foundation
 
-protocol LoginWork {
+protocol LoginWorkProtocol {
     func login(phone: String, completion: RequestCompletionBlock<LoginResponseModel>)
     func saveLoginInfo(info: String)
 }
 
-final class LoginWorker {
+final class LoginWorker: LoginWorkProtocol {
     func login(phone: String, completion: RequestCompletionBlock<LoginResponseModel>) {
         HNetworkManager.shared.sendRequest(with: AuthEndpoint.login,
                                            completion: completion)

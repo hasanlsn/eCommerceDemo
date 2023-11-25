@@ -18,6 +18,7 @@ extension UIColor {
     static let color777777 = UIColor(named: "Color777777")!
     static let colorCCCCCC = UIColor(named: "ColorCCCCCC")!
     static let colorFFE000 = UIColor(named: "ColorFFE000")!
+    static let colorE5E5E5 = UIColor(named: "ColorE5E5E5")!
     
     static func colorFromHex(hex: String?, alpha: CGFloat = 1.0) -> UIColor? {
         guard let hex else {

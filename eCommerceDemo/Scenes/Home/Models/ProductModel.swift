@@ -8,7 +8,7 @@
 import Foundation
 
 struct ProductModel: Decodable {
-    let id: Int?
+    let id: String?
     let name: String?
     let description: String?
     let origin: String?
@@ -31,7 +31,7 @@ struct ProductPriceItemModel: Decodable {
 }
 
 struct ProductBrandModel: Decodable {
-    let id: String?
+    let id: Int?
     let code: String?
     let name: String?
 }
