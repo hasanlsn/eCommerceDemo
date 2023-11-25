@@ -14,7 +14,8 @@ class ProductOfferSectionView: UIView {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame: .zero,
+                                              collectionViewLayout: layout)
         collectionView.registerCell(with: OfferProductItemCell.self)
         collectionView.registerCell(with: SeeAllCell.self)
         collectionView.backgroundColor = .clear

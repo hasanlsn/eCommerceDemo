@@ -1,6 +1,7 @@
 {
-  "colors" : [
+  "images" : [
     {
+      "filename" : "wallet_bg.pdf",
       "idiom" : "universal"
     }
   ],

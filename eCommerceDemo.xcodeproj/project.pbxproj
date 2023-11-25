@@ -95,6 +95,8 @@
 		16C6A5442B11605B004ACE5C /* LoginResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C6A5432B11605B004ACE5C /* LoginResponseModel.swift */; };
 		16C6A5472B1161E6004ACE5C /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 16C6A5462B1161E6004ACE5C /* KeychainAccess */; };
 		16C6A5492B1161F0004ACE5C /* HKeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C6A5482B1161F0004ACE5C /* HKeychainManager.swift */; };
+		16C6A54C2B11E582004ACE5C /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C6A54B2B11E582004ACE5C /* AuthView.swift */; };
+		16C6A54E2B11ED5D004ACE5C /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C6A54D2B11ED5D004ACE5C /* WalletView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -202,6 +204,8 @@
 		16C6A53D2B115AB3004ACE5C /* UITextFieldExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExt.swift; sourceTree = "<group>"; };
 		16C6A5432B11605B004ACE5C /* LoginResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseModel.swift; sourceTree = "<group>"; };
 		16C6A5482B1161F0004ACE5C /* HKeychainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKeychainManager.swift; sourceTree = "<group>"; };
+		16C6A54B2B11E582004ACE5C /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		16C6A54D2B11ED5D004ACE5C /* WalletView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -445,6 +449,8 @@
 		16C6A5092B10FB20004ACE5C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				16C6A54F2B11ED62004ACE5C /* WalletView */,
+				16C6A54A2B11E577004ACE5C /* AuthView */,
 				16C6A5112B110314004ACE5C /* Categories */,
 				16C6A5102B11030B004ACE5C /* ProductOffers */,
 				16C6A5142B1108D1004ACE5C /* BrandBanners */,
@@ -549,6 +555,22 @@
 				16C6A5432B11605B004ACE5C /* LoginResponseModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		16C6A54A2B11E577004ACE5C /* AuthView */ = {
+			isa = PBXGroup;
+			children = (
+				16C6A54B2B11E582004ACE5C /* AuthView.swift */,
+			);
+			path = AuthView;
+			sourceTree = "<group>";
+		};
+		16C6A54F2B11ED62004ACE5C /* WalletView */ = {
+			isa = PBXGroup;
+			children = (
+				16C6A54D2B11ED5D004ACE5C /* WalletView.swift */,
+			);
+			path = WalletView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -726,6 +748,7 @@
 				161E40842B0F9F320007D793 /* ProductModel.swift in Sources */,
 				16C6A5082B10FB1B004ACE5C /* CategoriesView.swift in Sources */,
 				161E40CE2B0FDADF0007D793 /* UIColorExt.swift in Sources */,
+				16C6A54E2B11ED5D004ACE5C /* WalletView.swift in Sources */,
 				161E405F2B0F851C0007D793 /* ProductEndpoint.swift in Sources */,
 				16C6A5312B114B00004ACE5C /* LoginModels.swift in Sources */,
 				161E40862B0FA1140007D793 /* ProductDetailResponseModel.swift in Sources */,
@@ -741,6 +764,7 @@
 				161E40592B0F85010007D793 /* ProfileEndpoint.swift in Sources */,
 				161E40482B0F7B240007D793 /* HNetworkLogger.swift in Sources */,
 				161E40502B0F7C870007D793 /* HConstants.swift in Sources */,
+				16C6A54C2B11E582004ACE5C /* AuthView.swift in Sources */,
 				161E40D82B1006820007D793 /* BrandBannerItemCell.swift in Sources */,
 				161E40472B0F7B240007D793 /* HTTPMethod.swift in Sources */,
 				161E40812B0F92110007D793 /* BrandBannersResponseModel.swift in Sources */,

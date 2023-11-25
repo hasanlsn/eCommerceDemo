@@ -54,6 +54,18 @@ final class HomeViewController: BaseViewController {
         return bannersView
     }()
     
+    private lazy var authView: AuthView = {
+        let authView = AuthView()
+        authView.delegate = self
+        return authView
+    }()
+    
+    private lazy var walletView: WalletView = {
+        let walletView = WalletView()
+        walletView.delegate = self
+        return walletView
+    }()
+    
     //
     
     // MARK: - Object lifecycle -
@@ -97,18 +109,18 @@ final class HomeViewController: BaseViewController {
         self.interactor?.viewDidLoad()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        self.router?.navigate(to: .login)
-    }
-    
     //
     
     // MARK: - Helpers -
     
     private func prepareViews() {
         self.view.backgroundColor = .white
+        
+        let leftView = UIBarButtonItem(customView: self.authView)
+        self.navigationItem.leftBarButtonItem = leftView
+        
+        let rightView = UIBarButtonItem(customView: self.walletView)
+        self.navigationItem.rightBarButtonItems = [rightView]
         
         self.view.addSubview(self.containerScrollView)
         self.containerScrollView.addSubview(self.containerStackView)
@@ -119,6 +131,7 @@ final class HomeViewController: BaseViewController {
         self.containerScrollView.snp.makeConstraints {
             $0.trailing.leading.top.bottom.equalToSuperview()
         }
+        
         self.containerStackView.snp.makeConstraints {
             $0.trailing.leading.top.bottom.equalToSuperview()
             $0.width.equalTo(self.view.snp.width)
@@ -140,3 +153,15 @@ extension HomeViewController: HomeDisplayLogic {
 }
 
 //
+
+extension HomeViewController: AuthViewDelegate {
+    func didTapLogin(_ authView: AuthView) {
+        self.router?.navigate(to: .login)
+    }
+}
+
+extension HomeViewController: WalletViewDelegate {
+    func didTapLogin(_ walletView: WalletView) {
+        
+    }
+}

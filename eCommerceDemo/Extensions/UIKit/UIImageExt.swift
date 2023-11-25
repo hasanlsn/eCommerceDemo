@@ -10,4 +10,7 @@ import UIKit
 
 extension UIImage {
     static let deleteText = UIImage(named: "delete_text")!
+    static let appLogo = UIImage(named: "app_logo")!
+    static let wallet = UIImage(named: "wallet")!
+    static let walletBg = UIImage(named: "wallet_bg")!
 }
