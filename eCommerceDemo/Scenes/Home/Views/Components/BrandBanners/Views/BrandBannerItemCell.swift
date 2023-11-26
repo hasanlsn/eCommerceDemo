@@ -52,10 +52,44 @@ class BrandBannerItemCell: UICollectionViewCell {
         return button
     }()
     
-    private lazy var actionLargeButton: OutlinedButton = {
-        let button = OutlinedButton()
-        button.addTarget(self, action: #selector(self.handleSeeAllAction), for: .touchUpInside)
-        return button
+    private lazy var brandImageContainer: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
+    
+    private lazy var buttonContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
+    
+    private lazy var textContainerStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [brandNameLabel, brandDescLabel])
+        stackView.axis = .vertical
+        stackView.spacing = 12
+        return stackView
+    }()
+    
+    private lazy var textAndSmallImageStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [textContainerStackView, brandImageContainer])
+        stackView.spacing = 0
+        stackView.alignment = .top
+        return stackView
+    }()
+    
+    private lazy var leftInfoStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [textAndSmallImageStackView, buttonContainerView])
+        stackView.axis = .vertical
+        stackView.spacing = 12
+        return stackView
+    }()
+    
+    private lazy var containerStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [leftInfoStackView, brandLargeImageView])
+        stackView.distribution = .fillProportionally
+        stackView.spacing = 16
+        return stackView
     }()
     
     weak var delegate: BrandBannerItemCellDelegate?
@@ -76,72 +110,52 @@ class BrandBannerItemCell: UICollectionViewCell {
     private func commonInit() {
         self.contentView.roundCorners(corners: .allCorners, radius: 8)
         
-        self.contentView.addSubview(self.brandImageView)
-        self.contentView.addSubview(self.brandNameLabel)
-        self.contentView.addSubview(self.brandDescLabel)
-        self.contentView.addSubview(self.actionButton)
-        self.contentView.addSubview(self.brandLargeImageView)
-        self.contentView.addSubview(self.actionLargeButton)
+        self.contentView.addSubview(self.containerStackView)
+        self.buttonContainerView.addSubview(self.actionButton)
+        self.brandImageContainer.addSubview(self.brandImageView)
+        
+        self.containerStackView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(16)
+            $0.trailing.equalToSuperview().offset(-10)
+            $0.leading.equalToSuperview().offset(10)
+            $0.bottom.equalToSuperview().offset(-16)
+        }
         
         self.brandImageView.snp.makeConstraints {
-            $0.top.equalTo(self.brandNameLabel.snp.top)
-            $0.trailing.equalToSuperview().offset(-10)
-            $0.width.equalTo(58)
-            $0.height.equalTo(90)
+            $0.width.equalTo(self).multipliedBy(CGFloat(58) / CGFloat(166))
+            $0.height.equalTo(self).multipliedBy(CGFloat(81) / CGFloat(166))
+            $0.trailing.leading.equalToSuperview()
+            $0.bottom.top.greaterThanOrEqualToSuperview().priority(.low)
+            $0.centerY.equalToSuperview()
         }
         
         self.brandLargeImageView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(16)
-            $0.trailing.equalToSuperview().offset(-20)
-            $0.bottom.equalToSuperview().offset(-16)
-        }
-        
-        self.brandNameLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(16)
-            $0.leading.equalToSuperview().offset(10)
-            $0.trailing.equalTo(self.brandImageView.snp.leading).offset(-4)
-            $0.trailing.equalTo(self.brandLargeImageView.snp.leading).offset(-4)
-        }
-        
-        self.brandDescLabel.snp.makeConstraints {
-            $0.top.equalTo(self.brandNameLabel.snp.bottom).offset(12)
-            $0.leading.trailing.equalTo(self.brandNameLabel)
+            $0.width.equalTo(self).multipliedBy(CGFloat(150) / CGFloat(344)).priority(.low)
         }
         
         self.actionButton.snp.makeConstraints {
-            $0.top.greaterThanOrEqualTo(self.brandImageView.snp.bottom).offset(10).priority(.low)
-            $0.leading.equalToSuperview().offset(10)
-            $0.trailing.equalToSuperview().offset(-10)
-            $0.bottom.equalToSuperview().offset(-16)
-        }
-        
-        self.actionLargeButton.snp.makeConstraints {
-            $0.top.greaterThanOrEqualTo(self.brandDescLabel.snp.bottom).offset(10).priority(.low)
-            $0.leading.equalToSuperview().offset(10)
-            $0.trailing.equalTo(self.brandLargeImageView.snp.leading).offset(-20)
-            $0.bottom.equalToSuperview().offset(-16)
+            $0.top.greaterThanOrEqualToSuperview().priority(.low)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
     
     func configure(viewModel: BrandBannerItemCellProtocol, isLarge: Bool) {
-        self.brandNameLabel.text = viewModel.title
-        self.brandDescLabel.text = viewModel.description
+        let color = UIColor.colorFromHex(hex: viewModel.textColor) ?? .black
         
-        self.brandImageView.isHidden = isLarge == true
+        self.brandNameLabel.text = viewModel.title
+        self.brandNameLabel.textColor = color
+        
+        self.brandDescLabel.text = viewModel.description
+        self.brandDescLabel.textColor = color
+        
+        self.brandImageContainer.isHidden = isLarge == true
         self.brandImageView.loadImage(url: viewModel.imageURL)
         
         self.brandLargeImageView.isHidden = isLarge != true
         self.brandLargeImageView.loadImage(url: viewModel.imageURL)
         
-        self.actionButton.isHidden = isLarge == true
         self.actionButton.setTitle(viewModel.buttonText, for: .normal)
-        
-        self.actionLargeButton.isHidden = isLarge != true
-        self.actionLargeButton.setTitle(viewModel.buttonText, for: .normal)
-        
-        let textColor = UIColor.colorFromHex(hex: viewModel.textColor) ?? .black
-        self.actionButton.color = textColor
-        self.actionLargeButton.color = textColor
+        self.actionButton.color = color
         
         let bgColor = UIColor.colorFromHex(hex: viewModel.backgroundColor)
         self.contentView.backgroundColor = bgColor

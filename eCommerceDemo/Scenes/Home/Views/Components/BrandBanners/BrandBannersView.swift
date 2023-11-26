@@ -96,7 +96,8 @@ extension BrandBannersView: UICollectionViewDelegateFlowLayout {
         var itemHeight: CGFloat!
         if indexPath.row == 0 {
             itemWidth = collectionView.bounds.width - 32
-            itemHeight = 166
+            let aspectRatio: CGFloat = 344 / 166
+            itemHeight = itemWidth / aspectRatio
         } else {
             itemWidth = (collectionView.bounds.width - (32 + 12)) / 2
             itemHeight = itemWidth
