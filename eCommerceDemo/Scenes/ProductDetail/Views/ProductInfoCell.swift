@@ -50,7 +50,18 @@ class ProductInfoCell: BaseTableViewCell {
     
     //
     
-    func configure(viewModel: ProductInfoCellViewModel) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        self.commonInit()
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func commonInit() {
         self.contentView.addSubview(self.nameLabel)
         self.contentView.addSubview(self.brandLabel)
         self.contentView.addSubview(self.descLabel)
@@ -85,7 +96,9 @@ class ProductInfoCell: BaseTableViewCell {
             $0.trailing.equalToSuperview().offset(-16)
             $0.bottom.greaterThanOrEqualTo(self.descLabel.snp.top).offset(-16).priority(.low)
         }
-        
+    }
+    
+    func configure(viewModel: ProductInfoCellViewModel) {
         self.nameLabel.text = viewModel.name
         self.brandLabel.text = viewModel.brand
         self.descLabel.text = viewModel.description

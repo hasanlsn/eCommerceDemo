@@ -47,7 +47,18 @@ class ProductNutritionItemCell: BaseTableViewCell {
     
     //
     
-    func configure(viewModel: ProductNutritionItemCellProtocol) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        self.commonInit()
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func commonInit() {
         self.contentView.addSubview(self.dividerView)
         self.contentView.addSubview(self.containerStackView)
         
@@ -62,7 +73,9 @@ class ProductNutritionItemCell: BaseTableViewCell {
             $0.leading.trailing.bottom.equalToSuperview()
             $0.height.equalTo(1)
         }
-        
+    }
+    
+    func configure(viewModel: ProductNutritionItemCellProtocol) {
         self.titleLabel.text = viewModel.title
         self.valueLabel.text = viewModel.value
     }

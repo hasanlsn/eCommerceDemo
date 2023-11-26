@@ -1,20 +1,17 @@
 //
-//  PrimaryButton.swift
+//  OutlinedButton.swift
 //  eCommerceDemo
 //
-//  Created by Hasan Ali Asan on 23.11.2023.
+//  Created by Hasan Ali Asan on 26.11.2023.
 //
 
 import UIKit
 
-class PrimaryButton: UIButton {
-    override var isEnabled: Bool {
+class OutlinedButton: UIButton {
+    var color: UIColor = .black {
         didSet {
-            if self.isEnabled == true {
-                self.backgroundColor = UIColor.color0551A0
-            } else {
-                self.backgroundColor = UIColor.colorB0B9C1
-            }
+            self.setTitleColor(color, for: .normal)
+            self.addBorder(width: 1, color: color)
         }
     }
     
@@ -36,13 +33,7 @@ class PrimaryButton: UIButton {
     }
     
     private func commonInit() {
-        self.snp.makeConstraints {
-            $0.height.equalTo(48)
-        }
-        
         self.roundCorners(radius: 4)
-        self.setTitleColor(.white, for: .normal)
-        self.setTitleColor(.white, for: .disabled)
         
         if #available(iOS 15.0, *) {
             var config = UIButton.Configuration.plain()
@@ -50,7 +41,7 @@ class PrimaryButton: UIButton {
             config.titleTextAttributesTransformer =
             UIConfigurationTextAttributesTransformer { incoming in
                 var outgoing = incoming
-                outgoing.font = UIFont(.jostBold, size: 16)
+                outgoing.font = UIFont(.jostBold, size: 12)
                 return outgoing
             }
             

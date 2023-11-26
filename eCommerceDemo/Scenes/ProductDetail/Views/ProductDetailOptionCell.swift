@@ -31,7 +31,18 @@ class ProductDetailOptionCell: BaseTableViewCell {
     
     //
     
-    func configure(title: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        self.commonInit()
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func commonInit() {
         self.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         
         self.contentView.addSubview(self.titleLabel)
@@ -49,7 +60,9 @@ class ProductDetailOptionCell: BaseTableViewCell {
             $0.centerY.equalTo(self.titleLabel.snp.centerY)
             $0.width.height.equalTo(14)
         }
-        
+    }
+    
+    func configure(title: String?) {
         self.titleLabel.text = title
     }
 }

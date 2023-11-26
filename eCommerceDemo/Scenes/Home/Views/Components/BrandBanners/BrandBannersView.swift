@@ -64,7 +64,8 @@ extension BrandBannersView: UICollectionViewDataSource {
         return self.brandBannersResponseModel?.content?.count ?? 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(withClassAndIdentifier: BrandBannerItemCell.self, for: indexPath)
         if let item = self.brandBannersResponseModel?.content?[indexPath.row] {
             cell.configure(viewModel: item)
@@ -80,13 +81,16 @@ extension BrandBannersView: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         var itemWidth: CGFloat!
+        var itemHeight: CGFloat!
         if indexPath.row == 0 {
             itemWidth = collectionView.bounds.width - 32
+            itemHeight = 166
         } else {
             itemWidth = (collectionView.bounds.width - (32 + 12)) / 2
+            itemHeight = itemWidth
         }
         
-        return CGSize(width: itemWidth, height: 166)
+        return CGSize(width: itemWidth, height: itemHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView,

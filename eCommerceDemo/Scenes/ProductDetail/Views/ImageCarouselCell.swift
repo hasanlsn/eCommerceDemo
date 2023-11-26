@@ -33,10 +33,18 @@ class ImageCarouselCell: BaseTableViewCell {
     
     //
     
-    func configure(images: [URL?]) {
-        self.images = images
-        self.pageControl.numberOfPages = images.count
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        self.commonInit()
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func commonInit() {
         self.contentView.addSubview(self.collectionView)
         self.contentView.addSubview(self.pageControl)
         
@@ -51,6 +59,11 @@ class ImageCarouselCell: BaseTableViewCell {
             $0.trailing.leading.equalToSuperview()
             $0.bottom.equalToSuperview().offset(-20)
         }
+    }
+    
+    func configure(images: [URL?]) {
+        self.images = images
+        self.pageControl.numberOfPages = images.count
         
         self.collectionView.reloadData()
     }

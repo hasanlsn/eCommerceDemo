@@ -38,23 +38,8 @@ class BrandBannerItemCell: UICollectionViewCell {
         return label
     }()
     
-    private lazy var actionButton: UIButton = {
-        let button = UIButton()
-        if #available(iOS 15.0, *) {
-            var config = UIButton.Configuration.plain()
-            config.contentInsets = NSDirectionalEdgeInsets(top: 4, leading: 6, bottom: 4, trailing: 6)
-            config.titleTextAttributesTransformer =
-            UIConfigurationTextAttributesTransformer { incoming in
-                var outgoing = incoming
-                outgoing.font = UIFont(.jostBold, size: 12)
-                return outgoing
-            }
-            button.configuration = config
-        } else {
-            button.contentEdgeInsets = UIEdgeInsets(top: 4, left: 6, bottom: 4, right: 6)
-            button.titleLabel?.font = UIFont(.jostBold, size: 12)
-        }
-        
+    private lazy var actionButton: OutlinedButton = {
+        let button = OutlinedButton()
         button.addTarget(self, action: #selector(self.handleSeeAllAction), for: .touchUpInside)
         return button
     }()
@@ -104,8 +89,9 @@ class BrandBannerItemCell: UICollectionViewCell {
         }
         
         self.actionButton.snp.makeConstraints {
-            $0.top.greaterThanOrEqualTo(self.brandImageView.snp.bottom).offset(10)
+            $0.top.greaterThanOrEqualTo(self.brandImageView.snp.bottom).offset(10).priority(.low)
             $0.leading.equalToSuperview().offset(10)
+            $0.trailing.equalToSuperview().offset(-10)
             $0.bottom.equalToSuperview().offset(-16)
         }
     }
@@ -118,9 +104,7 @@ class BrandBannerItemCell: UICollectionViewCell {
         self.actionButton.setTitle(viewModel.buttonText, for: .normal)
         
         let textColor = UIColor.colorFromHex(hex: viewModel.textColor) ?? .black
-        self.actionButton.setTitleColor(textColor, for: .normal)
-        self.actionButton.addBorder(width: 1, color: textColor)
-        self.actionButton.roundCorners(radius: 4)
+        self.actionButton.color = textColor
         
         let bgColor = UIColor.colorFromHex(hex: viewModel.backgroundColor)
         self.contentView.backgroundColor = bgColor
