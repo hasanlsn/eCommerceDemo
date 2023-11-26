@@ -35,12 +35,14 @@ extension ProductDetailRouter: ProductDetailRoutingLogic {
             let destinationVC = ProductInfoViewController()
             let destinationDS = destinationVC.router?.dataStore
             destinationDS?.productDetailResponseModel = self.dataStore?.productDetailResponseModel
-            self.viewController?.presentPanModal(destinationVC)
+            let drawer = DrawerViewController(childViewControllers: [destinationVC])
+            self.viewController?.presentPanModal(drawer)
         case .nutritions:
             let destinationVC = ProductNutritionsViewController()
             let destinationDS = destinationVC.router?.dataStore
             destinationDS?.productDetailResponseModel = self.dataStore?.productDetailResponseModel
-            self.viewController?.presentPanModal(destinationVC)
+            let drawer = DrawerViewController(childViewControllers: [destinationVC])
+            self.viewController?.presentPanModal(drawer)
         }
     }
 }

@@ -83,6 +83,8 @@
 		1627DA962B136AA80042FAEF /* HRoutingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1627DA952B136AA80042FAEF /* HRoutingManager.swift */; };
 		1627DA982B136FD40042FAEF /* OutlinedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1627DA972B136FD40042FAEF /* OutlinedButton.swift */; };
 		1627DA9A2B1372C60042FAEF /* NavigationBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1627DA992B1372C60042FAEF /* NavigationBackView.swift */; };
+		166E74FA2B13DBD800EF98DE /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166E74F82B13DBD800EF98DE /* DrawerViewController.swift */; };
+		166E74FB2B13DBD800EF98DE /* DrawerPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166E74F92B13DBD800EF98DE /* DrawerPresentable.swift */; };
 		169BC6FB2B12792C00348814 /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = 169BC6FA2B12792C00348814 /* PanModal */; };
 		169BC7042B12798700348814 /* ProductInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169BC6FD2B12798700348814 /* ProductInfoPresenter.swift */; };
 		169BC7052B12798700348814 /* ProductInfoWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169BC6FE2B12798700348814 /* ProductInfoWorker.swift */; };
@@ -91,7 +93,6 @@
 		169BC7082B12798700348814 /* ProductInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169BC7012B12798700348814 /* ProductInfoViewController.swift */; };
 		169BC7092B12798700348814 /* ProductInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169BC7022B12798700348814 /* ProductInfoInteractor.swift */; };
 		169BC70C2B128AA200348814 /* PrimarySegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169BC70B2B128AA200348814 /* PrimarySegmentedControl.swift */; };
-		169BC7102B129E7D00348814 /* PanPresentableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169BC70F2B129E7D00348814 /* PanPresentableViewController.swift */; };
 		16C6A5062B10FA79004ACE5C /* ProductOffersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C6A5052B10FA79004ACE5C /* ProductOffersView.swift */; };
 		16C6A5082B10FB1B004ACE5C /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C6A5072B10FB1B004ACE5C /* CategoriesView.swift */; };
 		16C6A50B2B10FF94004ACE5C /* ViewLifeCycleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C6A50A2B10FF94004ACE5C /* ViewLifeCycleProtocol.swift */; };
@@ -230,6 +231,8 @@
 		1627DA952B136AA80042FAEF /* HRoutingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRoutingManager.swift; sourceTree = "<group>"; };
 		1627DA972B136FD40042FAEF /* OutlinedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutlinedButton.swift; sourceTree = "<group>"; };
 		1627DA992B1372C60042FAEF /* NavigationBackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBackView.swift; sourceTree = "<group>"; };
+		166E74F82B13DBD800EF98DE /* DrawerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
+		166E74F92B13DBD800EF98DE /* DrawerPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerPresentable.swift; sourceTree = "<group>"; };
 		169BC6FD2B12798700348814 /* ProductInfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoPresenter.swift; sourceTree = "<group>"; };
 		169BC6FE2B12798700348814 /* ProductInfoWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoWorker.swift; sourceTree = "<group>"; };
 		169BC6FF2B12798700348814 /* ProductInfoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoRouter.swift; sourceTree = "<group>"; };
@@ -237,7 +240,6 @@
 		169BC7012B12798700348814 /* ProductInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoViewController.swift; sourceTree = "<group>"; };
 		169BC7022B12798700348814 /* ProductInfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoInteractor.swift; sourceTree = "<group>"; };
 		169BC70B2B128AA200348814 /* PrimarySegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimarySegmentedControl.swift; sourceTree = "<group>"; };
-		169BC70F2B129E7D00348814 /* PanPresentableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanPresentableViewController.swift; sourceTree = "<group>"; };
 		16C6A5052B10FA79004ACE5C /* ProductOffersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductOffersView.swift; sourceTree = "<group>"; };
 		16C6A5072B10FB1B004ACE5C /* CategoriesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
 		16C6A50A2B10FF94004ACE5C /* ViewLifeCycleProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLifeCycleProtocol.swift; sourceTree = "<group>"; };
@@ -558,6 +560,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		166E74F72B13DBCD00EF98DE /* Drawer */ = {
+			isa = PBXGroup;
+			children = (
+				166E74F92B13DBD800EF98DE /* DrawerPresentable.swift */,
+				166E74F82B13DBD800EF98DE /* DrawerViewController.swift */,
+			);
+			path = Drawer;
+			sourceTree = "<group>";
+		};
 		169BC6FC2B12797900348814 /* Child */ = {
 			isa = PBXGroup;
 			children = (
@@ -623,6 +634,7 @@
 		16C6A51C2B111FAC004ACE5C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				166E74F72B13DBCD00EF98DE /* Drawer */,
 				1627DA992B1372C60042FAEF /* NavigationBackView.swift */,
 				16C6A5392B11527A004ACE5C /* PrimaryTextField.swift */,
 				16C6A5372B114ED1004ACE5C /* PrimaryButton.swift */,
@@ -634,7 +646,6 @@
 				16C6A5662B125F7F004ACE5C /* PrimaryPageControl.swift */,
 				169BC70B2B128AA200348814 /* PrimarySegmentedControl.swift */,
 				16C6A56C2B1271FC004ACE5C /* BaseTableViewCell.swift */,
-				169BC70F2B129E7D00348814 /* PanPresentableViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -896,7 +907,6 @@
 			files = (
 				16C6A53E2B115AB3004ACE5C /* UITextFieldExt.swift in Sources */,
 				16C6A55B2B12203A004ACE5C /* ProductDetailModels.swift in Sources */,
-				169BC7102B129E7D00348814 /* PanPresentableViewController.swift in Sources */,
 				16C6A5182B111E8D004ACE5C /* BaseNavigationController.swift in Sources */,
 				16C6A5212B1120AA004ACE5C /* SeeAllCell.swift in Sources */,
 				161E405B2B0F850D0007D793 /* CategoryEndpoint.swift in Sources */,
@@ -910,6 +920,7 @@
 				16C6A5082B10FB1B004ACE5C /* CategoriesView.swift in Sources */,
 				1627DA882B1358060042FAEF /* ProductNutritionsInteractor.swift in Sources */,
 				161E40CE2B0FDADF0007D793 /* UIColorExt.swift in Sources */,
+				166E74FA2B13DBD800EF98DE /* DrawerViewController.swift in Sources */,
 				16C6A54E2B11ED5D004ACE5C /* WalletView.swift in Sources */,
 				161E405F2B0F851C0007D793 /* ProductEndpoint.swift in Sources */,
 				1627DA902B1362D10042FAEF /* ProductNutritionFooterView.swift in Sources */,
@@ -963,6 +974,7 @@
 				1627DA862B1358060042FAEF /* ProductNutritionsModels.swift in Sources */,
 				169BC7082B12798700348814 /* ProductInfoViewController.swift in Sources */,
 				1627DA872B1358060042FAEF /* ProductNutritionsViewController.swift in Sources */,
+				166E74FB2B13DBD800EF98DE /* DrawerPresentable.swift in Sources */,
 				161E40742B0F904F0007D793 /* HomeModels.swift in Sources */,
 				16C6A5332B114B00004ACE5C /* LoginInteractor.swift in Sources */,
 				161E400C2B0F60DB0007D793 /* AppDelegate.swift in Sources */,

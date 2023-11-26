@@ -14,7 +14,7 @@ protocol ProductInfoDisplayLogic: AnyObject {
     func displayProductInfo(viewModel: ProductInfo.Info.ViewModel)
 }
 
-final class ProductInfoViewController: PanPresentableViewController {
+final class ProductInfoViewController: BaseViewController {
     // MARK: - IBOutlets -
     
     //
@@ -27,6 +27,11 @@ final class ProductInfoViewController: PanPresentableViewController {
     //
     
     // MARK: - Private Properties -
+    
+    private lazy var headerContainerView: UIView = {
+        let view = UIView()
+        return view
+    }()
     
     private lazy var dragIndicator: UIView = {
         let view = UIView()
@@ -115,11 +120,16 @@ final class ProductInfoViewController: PanPresentableViewController {
     // MARK: - Helpers -
     
     private func prepareViews() {
-        self.view.addSubview(self.dragIndicator)
-        self.view.addSubview(self.segmentedControl)
-        self.view.addSubview(self.dividerView)
+        self.headerContainerView.addSubview(self.dragIndicator)
+        self.headerContainerView.addSubview(self.segmentedControl)
+        self.headerContainerView.addSubview(self.dividerView)
+        self.view.addSubview(self.headerContainerView)
         self.view.addSubview(self.webView)
         self.view.addSubview(self.textView)
+        
+        self.headerContainerView.snp.makeConstraints {
+            $0.trailing.leading.top.equalToSuperview()
+        }
         
         self.dragIndicator.snp.makeConstraints {
             $0.width.equalTo(48)
@@ -138,18 +148,19 @@ final class ProductInfoViewController: PanPresentableViewController {
         self.dividerView.snp.makeConstraints {
             $0.top.equalTo(self.segmentedControl.snp.bottom)
             $0.leading.trailing.equalTo(self.segmentedControl)
+            $0.bottom.equalToSuperview().offset(-16)
             $0.height.equalTo(1)
         }
         
         self.webView.snp.makeConstraints {
             $0.leading.trailing.equalTo(self.dividerView)
-            $0.top.equalTo(self.dividerView.snp.bottom).offset(16)
+            $0.top.equalTo(self.headerContainerView.snp.bottom)
             $0.bottom.equalToSuperview().offset(-16)
         }
         
         self.textView.snp.makeConstraints {
             $0.leading.trailing.equalTo(self.dividerView)
-            $0.top.equalTo(self.dividerView.snp.bottom).offset(16)
+            $0.top.equalTo(self.headerContainerView.snp.bottom)
             $0.bottom.greaterThanOrEqualToSuperview().offset(-16).priority(.low)
         }
     }
@@ -163,19 +174,7 @@ final class ProductInfoViewController: PanPresentableViewController {
         self.webView.isHidden = sender.selectedSegmentIndex != 0
         self.textView.isHidden = sender.selectedSegmentIndex != 1
         
-        self.calculateContentHeight()
-    }
-    
-    private func calculateContentHeight() {
-        if self.webView.isHidden == false {
-            self.contentHeight = 6 + 8 + 44 + 16 + 16 + self.webViewContentHeight
-            return
-        }
-        
-        if self.textView.isHidden == false {
-            self.contentHeight = 6 + 8 + 44 + 16 + 16 + self.textView.frame.size.height
-            return
-        }
+        self.drawerPanSetNeedsLayout()
     }
     
     //
@@ -218,9 +217,27 @@ document.body.scrollHeight;
                 if let height = result as? CGFloat {
                     self?.webViewContentHeight = height
                     
-                    self?.calculateContentHeight()
+                    self?.drawerPanSetNeedsLayout()
                 }
             })
         })
+    }
+}
+
+extension ProductInfoViewController: DrawerPresentable {
+    var panScrollView: UIScrollView? {
+        return nil
+    }
+    
+    var panContentHeight: CGFloat? {
+        if self.webView.isHidden == false {
+            return self.headerContainerView.bounds.size.height + self.webViewContentHeight
+        }
+        
+        if self.textView.isHidden == false {
+            return self.headerContainerView.bounds.size.height + self.textView.frame.size.height
+        }
+        
+        return nil
     }
 }

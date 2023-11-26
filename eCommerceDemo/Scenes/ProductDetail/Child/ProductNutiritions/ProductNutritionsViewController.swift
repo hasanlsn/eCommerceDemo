@@ -12,7 +12,7 @@ protocol ProductNutritionsDisplayLogic: AnyObject {
     func displayNutritions(viewModel: ProductNutritions.List.ViewModel)
 }
 
-final class ProductNutritionsViewController: PanPresentableViewController {
+final class ProductNutritionsViewController: BaseViewController {
     // MARK: - IBOutlets -
     
     //
@@ -25,6 +25,11 @@ final class ProductNutritionsViewController: PanPresentableViewController {
     //
     
     // MARK: - Private Properties -
+    
+    private lazy var headerContainerView: UIView = {
+        let view = UIView()
+        return view
+    }()
     
     private lazy var dragIndicator: UIView = {
         let view = UIView()
@@ -109,7 +114,7 @@ final class ProductNutritionsViewController: PanPresentableViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        self.contentHeight = 6 + 8 + 44 + 16 + 16 + self.tableView.contentSize.height
+        self.drawerPanSetNeedsLayout()
     }
     
     //
@@ -117,10 +122,15 @@ final class ProductNutritionsViewController: PanPresentableViewController {
     // MARK: - Helpers -
     
     private func prepareViews() {
-        self.view.addSubview(self.dragIndicator)
-        self.view.addSubview(self.pageTitleLabel)
-        self.view.addSubview(self.dividerView)
+        self.headerContainerView.addSubview(self.dragIndicator)
+        self.headerContainerView.addSubview(self.pageTitleLabel)
+        self.headerContainerView.addSubview(self.dividerView)
+        self.view.addSubview(self.headerContainerView)
         self.view.addSubview(self.tableView)
+        
+        self.headerContainerView.snp.makeConstraints {
+            $0.trailing.leading.top.equalToSuperview()
+        }
         
         self.dragIndicator.snp.makeConstraints {
             $0.width.equalTo(48)
@@ -138,12 +148,13 @@ final class ProductNutritionsViewController: PanPresentableViewController {
         self.dividerView.snp.makeConstraints {
             $0.top.equalTo(self.pageTitleLabel.snp.bottom).offset(12)
             $0.leading.trailing.equalTo(self.pageTitleLabel)
+            $0.bottom.equalToSuperview().offset(-16)
             $0.height.equalTo(1)
         }
         
         self.tableView.snp.makeConstraints {
             $0.leading.trailing.equalTo(self.dividerView)
-            $0.top.equalTo(self.dividerView.snp.bottom).offset(16)
+            $0.top.equalTo(self.headerContainerView.snp.bottom)
             $0.bottom.equalToSuperview().offset(-16)
         }
     }
@@ -213,5 +224,15 @@ extension ProductNutritionsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return UITableView.automaticDimension
+    }
+}
+
+extension ProductNutritionsViewController: DrawerPresentable {
+    var panScrollView: UIScrollView? {
+        return nil
+    }
+    
+    var panContentHeight: CGFloat? {
+        return self.headerContainerView.bounds.size.height + self.tableView.contentSize.height
     }
 }

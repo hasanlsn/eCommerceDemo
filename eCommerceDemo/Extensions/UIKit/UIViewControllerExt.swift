@@ -30,4 +30,23 @@ extension UIViewController {
     static func topViewController() -> UIViewController? {
         return UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.rootViewController?.topMostViewController()
     }
+    
+    func addWithView(_ child: UIViewController, to: UIView? = nil) {
+        guard let destinationView = to,
+              let childView = child.view else {
+            return
+        }
+        
+        self.addChild(child)
+        
+        childView.translatesAutoresizingMaskIntoConstraints = false
+        destinationView.addSubview(childView)
+        
+        NSLayoutConstraint.activate([childView.topAnchor.constraint(equalTo: destinationView.topAnchor),
+                                     childView.bottomAnchor.constraint(equalTo: destinationView.bottomAnchor),
+                                     childView.trailingAnchor.constraint(equalTo: destinationView.trailingAnchor),
+                                     childView.leadingAnchor.constraint(equalTo: destinationView.leadingAnchor)])
+        
+        child.didMove(toParent: self)
+    }
 }
