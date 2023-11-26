@@ -41,7 +41,7 @@ class CategoryItemCell: UICollectionViewCell {
     
     private func commonInit() {
         self.contentView.backgroundColor = .clear
-        self.contentView.roundCorners(radius: 4)
+        self.contentView.roundCorners(corners: .allCorners, radius: 4)
         
         self.contentView.addSubview(self.categoryImageView)
         self.contentView.addSubview(self.categoryTitleLabel)

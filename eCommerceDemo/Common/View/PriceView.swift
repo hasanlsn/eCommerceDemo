@@ -14,7 +14,7 @@ class PriceView: UIView {
     private lazy var innerContainerView: UIView = {
         let view = UIView()
         view.backgroundColor = .colorFAE14B
-        view.roundCorners(radius: 2)
+        view.roundCorners(corners: .allCorners, radius: 2)
         return view
     }()
     
@@ -28,7 +28,7 @@ class PriceView: UIView {
     private lazy var originalPriceContainerView: UIView = {
         let view = UIView()
         view.backgroundColor = .colorCC1512
-        view.roundCorners(radius: 2)
+        view.roundCorners(corners: .allCorners, radius: 2)
         return view
     }()
     

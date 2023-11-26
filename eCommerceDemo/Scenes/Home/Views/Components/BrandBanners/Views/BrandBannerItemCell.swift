@@ -60,9 +60,7 @@ class BrandBannerItemCell: UICollectionViewCell {
     }
     
     private func commonInit() {
-        self.contentView.backgroundColor = .white
-        
-        self.contentView.roundCorners(radius: 8)
+        self.contentView.roundCorners(corners: .allCorners, radius: 8)
         
         self.contentView.addSubview(self.brandImageView)
         self.contentView.addSubview(self.brandNameLabel)

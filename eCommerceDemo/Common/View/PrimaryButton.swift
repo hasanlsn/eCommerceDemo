@@ -40,7 +40,7 @@ class PrimaryButton: UIButton {
             $0.height.equalTo(48)
         }
         
-        self.roundCorners(radius: 4)
+        self.roundCorners(corners: .allCorners, radius: 4)
         self.setTitleColor(.white, for: .normal)
         self.setTitleColor(.white, for: .disabled)
         

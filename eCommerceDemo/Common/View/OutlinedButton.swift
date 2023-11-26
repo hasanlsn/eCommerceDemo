@@ -33,7 +33,7 @@ class OutlinedButton: UIButton {
     }
     
     private func commonInit() {
-        self.roundCorners(radius: 4)
+        self.roundCorners(corners: .allCorners, radius: 4)
         
         if #available(iOS 15.0, *) {
             var config = UIButton.Configuration.plain()

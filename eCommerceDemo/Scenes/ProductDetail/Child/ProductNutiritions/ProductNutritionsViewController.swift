@@ -28,7 +28,7 @@ final class ProductNutritionsViewController: PanPresentableViewController {
     
     private lazy var dragIndicator: UIView = {
         let view = UIView()
-        view.roundCorners(radius: 3)
+        view.roundCorners(corners: .allCorners, radius: 3)
         view.backgroundColor = UIColor.colorCCCCCC
         return view
     }()

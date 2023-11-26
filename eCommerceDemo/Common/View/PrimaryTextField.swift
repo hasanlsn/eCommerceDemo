@@ -51,7 +51,7 @@ class PrimaryTextField: UITextField {
             $0.height.equalTo(48)
         }
         
-        self.roundCorners(radius: 4)
+        self.roundCorners(corners: .allCorners, radius: 4)
         
         self.layer.borderWidth = 1
         self.backgroundColor = .white
