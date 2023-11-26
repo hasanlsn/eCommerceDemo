@@ -82,6 +82,7 @@
 		1627DA942B1366BE0042FAEF /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1627DA932B1366BE0042FAEF /* UIViewControllerExt.swift */; };
 		1627DA962B136AA80042FAEF /* HRoutingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1627DA952B136AA80042FAEF /* HRoutingManager.swift */; };
 		1627DA982B136FD40042FAEF /* OutlinedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1627DA972B136FD40042FAEF /* OutlinedButton.swift */; };
+		1627DA9A2B1372C60042FAEF /* NavigationBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1627DA992B1372C60042FAEF /* NavigationBackView.swift */; };
 		169BC6FB2B12792C00348814 /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = 169BC6FA2B12792C00348814 /* PanModal */; };
 		169BC7042B12798700348814 /* ProductInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169BC6FD2B12798700348814 /* ProductInfoPresenter.swift */; };
 		169BC7052B12798700348814 /* ProductInfoWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169BC6FE2B12798700348814 /* ProductInfoWorker.swift */; };
@@ -228,6 +229,7 @@
 		1627DA932B1366BE0042FAEF /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
 		1627DA952B136AA80042FAEF /* HRoutingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRoutingManager.swift; sourceTree = "<group>"; };
 		1627DA972B136FD40042FAEF /* OutlinedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutlinedButton.swift; sourceTree = "<group>"; };
+		1627DA992B1372C60042FAEF /* NavigationBackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBackView.swift; sourceTree = "<group>"; };
 		169BC6FD2B12798700348814 /* ProductInfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoPresenter.swift; sourceTree = "<group>"; };
 		169BC6FE2B12798700348814 /* ProductInfoWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoWorker.swift; sourceTree = "<group>"; };
 		169BC6FF2B12798700348814 /* ProductInfoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoRouter.swift; sourceTree = "<group>"; };
@@ -621,6 +623,7 @@
 		16C6A51C2B111FAC004ACE5C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1627DA992B1372C60042FAEF /* NavigationBackView.swift */,
 				16C6A5392B11527A004ACE5C /* PrimaryTextField.swift */,
 				16C6A5372B114ED1004ACE5C /* PrimaryButton.swift */,
 				1627DA972B136FD40042FAEF /* OutlinedButton.swift */,
@@ -938,6 +941,7 @@
 				1627DA922B1366490042FAEF /* HAlert.swift in Sources */,
 				161E40812B0F92110007D793 /* BrandBannersResponseModel.swift in Sources */,
 				161E40722B0F904F0007D793 /* HomeWorker.swift in Sources */,
+				1627DA9A2B1372C60042FAEF /* NavigationBackView.swift in Sources */,
 				16C6A5692B126847004ACE5C /* ProductInfoCell.swift in Sources */,
 				161E40712B0F904F0007D793 /* HomePresenter.swift in Sources */,
 				1627DA942B1366BE0042FAEF /* UIViewControllerExt.swift in Sources */,

@@ -12,7 +12,7 @@ protocol ProductDetailDisplayLogic: AnyObject {
     func displayProductDetail(viewModel: ProductDetail.Detail.ViewModel)
 }
 
-final class ProductDetailViewController: UIViewController {
+final class ProductDetailViewController: BaseViewController {
     // MARK: - IBOutlets -
     
     //
@@ -86,6 +86,9 @@ final class ProductDetailViewController: UIViewController {
     // MARK: - Helpers -
     
     private func prepareViews() {
+        self.navigationItem.title = "Ürün Detayı"
+        self.hideTitleView = true
+        
         self.view.addSubview(self.tableView)
         
         self.tableView.snp.makeConstraints {

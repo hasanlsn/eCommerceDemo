@@ -9,7 +9,14 @@
 import UIKit
 
 class BaseViewController: UIViewController {
-
+    var hideTitleView: Bool = false {
+        didSet {
+            if hideTitleView == true {
+                self.navigationItem.titleView = UIView()
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
