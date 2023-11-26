@@ -17,7 +17,7 @@ The project is using Swift Package Manager for managing external libraries.
 
 ### Core Dependencies
 
-* Alamofire - HTTP networking library
+* Alamofire - Alamofire is an HTTP networking library written in Swift.
 * KingFisher - Kingfisher is a powerful, pure-Swift library for downloading and caching images from the web.
 * SnapKit - SnapKit is a DSL to make Auto Layout easy on both iOS and OS X.
 
