@@ -15,13 +15,9 @@ extension UIView {
     }
     
     func roundCorners(corners: UIRectCorner, radius: CGFloat) {
-        let path = UIBezierPath(roundedRect: self.bounds,
-                                byRoundingCorners: corners,
-                                cornerRadii: CGSize(width: radius,
-                                                    height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        layer.mask = mask
+        self.clipsToBounds = true
+        self.layer.cornerRadius = radius
+        self.layer.maskedCorners = CACornerMask(rawValue: corners.rawValue)
     }
     
     func addShadowWithRoundedCorners(color: UIColor,

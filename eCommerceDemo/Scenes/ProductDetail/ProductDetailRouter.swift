@@ -37,7 +37,10 @@ extension ProductDetailRouter: ProductDetailRoutingLogic {
             destinationDS?.productDetailResponseModel = self.dataStore?.productDetailResponseModel
             self.viewController?.presentPanModal(destinationVC)
         case .nutritions:
-            break
+            let destinationVC = ProductNutritionsViewController()
+            let destinationDS = destinationVC.router?.dataStore
+            destinationDS?.productDetailResponseModel = self.dataStore?.productDetailResponseModel
+            self.viewController?.presentPanModal(destinationVC)
         }
     }
 }

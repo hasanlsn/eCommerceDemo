@@ -128,8 +128,6 @@ final class ProductInfoViewController: PanPresentableViewController {
             $0.centerX.equalToSuperview()
         }
         
-        // 6 + 8 + 44 + 16 + 16 + content
-        
         self.segmentedControl.snp.makeConstraints {
             $0.top.equalTo(self.dragIndicator.snp.bottom).offset(16)
             $0.leading.equalToSuperview().offset(24)
