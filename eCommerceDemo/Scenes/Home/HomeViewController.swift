@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 protocol HomeDisplayLogic: AnyObject {
-    
+    func displayLoginUpdate(viewModel: Home.User.ViewModel)
 }
 
 final class HomeViewController: BaseViewController {
@@ -62,7 +62,6 @@ final class HomeViewController: BaseViewController {
     
     private lazy var walletView: WalletView = {
         let walletView = WalletView()
-        walletView.delegate = self
         return walletView
     }()
     
@@ -123,9 +122,6 @@ final class HomeViewController: BaseViewController {
         let leftView = UIBarButtonItem(customView: self.authView)
         self.navigationItem.leftBarButtonItem = leftView
         
-        let rightView = UIBarButtonItem(customView: self.walletView)
-        self.navigationItem.rightBarButtonItems = [rightView]
-        
         self.view.addSubview(self.containerScrollView)
         self.containerScrollView.addSubview(self.containerStackView)
         self.containerStackView.addArrangedSubview(self.categoriesView)
@@ -153,19 +149,31 @@ final class HomeViewController: BaseViewController {
 // MARK: - HomeDisplayLogic -
 
 extension HomeViewController: HomeDisplayLogic {
-
+    func displayLoginUpdate(viewModel: Home.User.ViewModel) {
+        if viewModel.isLoggedIn == true {
+            let rightView = UIBarButtonItem(customView: self.walletView)
+            self.navigationItem.rightBarButtonItem = rightView
+        } else {
+            self.navigationItem.rightBarButtonItem = nil
+        }
+        
+        self.authView.updateAuthInfo(isLoggedIn: viewModel.isLoggedIn,
+                                     nameAndSurname: viewModel.nameAndSurname)
+    }
 }
 
 //
 
 extension HomeViewController: AuthViewDelegate {
     func didTapLogin(_ authView: AuthView) {
-        self.router?.navigate(to: .login)
+        self.router?.navigate(to: .login(delegate: self))
     }
 }
 
-extension HomeViewController: WalletViewDelegate {
-    func didTapLogin(_ walletView: WalletView) {
-        
+extension HomeViewController: LoginViewControllerDelegate {
+    func userDidLogin(_ viewController: LoginViewController) {
+        viewController.dismiss(animated: true) { [weak self] in
+            self?.interactor?.userDidLogin()
+        }
     }
 }

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol LoginViewControllerDelegate: AnyObject {
+    func userDidLogin(_ viewController: LoginViewController)
+}
+
 protocol LoginDisplayLogic: AnyObject {
     func displayLoginFinish()
 }
@@ -21,6 +25,8 @@ final class LoginViewController: BaseViewController {
     
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
+    
+    weak var delegate: LoginViewControllerDelegate?
     
     //
     
@@ -151,7 +157,7 @@ final class LoginViewController: BaseViewController {
 
 extension LoginViewController: LoginDisplayLogic {
     func displayLoginFinish() {
-        self.dismiss(animated: true)
+        self.delegate?.userDidLogin(self)
     }
 }
 

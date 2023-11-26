@@ -10,6 +10,7 @@ import Foundation
 
 protocol HomeBusinessLogic: AnyObject { 
     func viewDidLoad()
+    func userDidLogin()
 }
 
 protocol HomeDataStore: AnyObject { }
@@ -23,7 +24,17 @@ final class HomeInteractor {
 
 extension HomeInteractor: HomeBusinessLogic, HomeDataStore { 
     func viewDidLoad() {
-        
+        self.checkLogin()
+    }
+    
+    func userDidLogin() {
+        self.checkLogin()
+    }
+    
+    private func checkLogin() {
+        let userInfo = self.worker.getLoginInfo()
+        let response = Home.User.Response(responseModel: userInfo)
+        self.presenter?.presentLoginUpdate(response: response)
     }
 }
 

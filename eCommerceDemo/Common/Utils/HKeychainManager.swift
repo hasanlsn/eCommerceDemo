@@ -8,8 +8,8 @@
 import Foundation
 import KeychainAccess
 
-class HKeychainManager: NSObject {
-    static let keychain = Keychain(service: "ECOMMERCEDEMO_Keychain_Service")
+final class HKeychainManager: NSObject {
+    private static let keychain = Keychain(service: "ECOMMERCEDEMO_Keychain_Service")
     
     class func setString(item: String, forKey key: String) {
         do {

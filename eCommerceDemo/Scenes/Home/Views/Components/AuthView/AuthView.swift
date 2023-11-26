@@ -40,6 +40,8 @@ class AuthView: UIView {
         return label
     }()
     
+    private var isLoggedIn: Bool = false
+    
     //
     
     // MARK: - Public Properties -
@@ -82,6 +84,16 @@ class AuthView: UIView {
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview()
         }
+    }
+    
+    func updateAuthInfo(isLoggedIn: Bool, nameAndSurname: String?) {
+        if isLoggedIn == true {
+            self.titleLabel.text = "Hoş geldin \(nameAndSurname ?? ""),"
+        } else {
+            self.titleLabel.text = "Giriş Yap"
+        }
+        
+        self.titleLabel.isUserInteractionEnabled = isLoggedIn == false
     }
     
     // MARK: - Actions -

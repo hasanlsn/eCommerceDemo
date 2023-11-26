@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NavigationBackView: UIView {
+final class NavigationBackView: UIView {
     // MARK: - Private Properties -
     
     private lazy var backButton: UIButton = {

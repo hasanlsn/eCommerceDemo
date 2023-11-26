@@ -9,9 +9,17 @@
 import Foundation
 
 protocol HomeWorkProtocol {
-    
+    func getLoginInfo() -> LoginResponseModel?
 }
 
 final class HomeWorker: HomeWorkProtocol {
-    
+    func getLoginInfo() -> LoginResponseModel? {
+        let info = HKeychainManager.getString(forKey: HConstants.Keychain.LOGIN_INFO_KEY)
+        guard let infoDictionary = info?.toDictionary() else {
+            return nil
+        }
+        
+        let model = LoginResponseModel.createWith(JSON: infoDictionary)
+        return model
+    }
 }

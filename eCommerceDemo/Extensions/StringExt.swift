@@ -30,6 +30,15 @@ extension String {
         let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
         return phoneTest.evaluate(with: self)
     }
+    
+    func toDictionary() -> [String: Any]? {
+        guard let data = self.data(using: .utf8) else {
+            return nil
+        }
+        
+        let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any]
+        return json
+    }
 }
 
 extension NSMutableAttributedString {

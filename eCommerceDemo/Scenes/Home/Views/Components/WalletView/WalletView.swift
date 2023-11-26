@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol WalletViewDelegate: AnyObject {
-    func didTapLogin(_ walletView: WalletView)
-}
-
 class WalletView: UIView {
     // MARK: - Private Properties -
     
@@ -63,8 +59,6 @@ class WalletView: UIView {
     //
     
     // MARK: - Public Properties -
-    
-    weak var delegate: WalletViewDelegate?
     
     //
     

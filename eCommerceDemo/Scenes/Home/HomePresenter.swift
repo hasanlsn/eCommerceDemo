@@ -9,7 +9,7 @@
 import Foundation
 
 protocol HomePresentationLogic: AnyObject {
-    
+    func presentLoginUpdate(response: Home.User.Response)
 }
 
 final class HomePresenter {
@@ -19,7 +19,16 @@ final class HomePresenter {
 // MARK: - HomePresentationLogic -
 
 extension HomePresenter: HomePresentationLogic {
-    
+    func presentLoginUpdate(response: Home.User.Response) {
+        let responseModel = response.responseModel
+        let isLoggedIn = responseModel != nil
+        let name = responseModel?.name ?? ""
+        let surname = responseModel?.surname ?? ""
+        let nameAndSurname = "\(name) \(surname)"
+        let viewModel = Home.User.ViewModel(isLoggedIn: isLoggedIn,
+                                            nameAndSurname: nameAndSurname)
+        self.viewController?.displayLoginUpdate(viewModel: viewModel)
+    }
 }
 
 //

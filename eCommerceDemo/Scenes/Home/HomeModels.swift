@@ -9,17 +9,18 @@
 import Foundation
 
 enum Home {
-    enum List {
+    enum User {
         struct Request {
             
         }
         
         struct Response {
-            
+            let responseModel: LoginResponseModel?
         }
         
         struct ViewModel {
-            
+            let isLoggedIn: Bool
+            let nameAndSurname: String?
         }
     }
 }

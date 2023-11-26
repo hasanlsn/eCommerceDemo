@@ -9,7 +9,7 @@
 import UIKit
 
 enum HomeNavigationOption {
-    case login
+    case login(delegate: LoginViewControllerDelegate?)
     case productDetail
 }
 
@@ -31,8 +31,9 @@ final class HomeRouter: NSObject, HomeDataPassing {
 extension HomeRouter: HomeRoutingLogic {
     func navigate(to option: HomeNavigationOption) {
         switch option {
-        case .login:
+        case .login(let delegate):
             let destinationVC = LoginViewController()
+            destinationVC.delegate = delegate
             let nav = BaseNavigationController(rootViewController: destinationVC)
             nav.modalPresentationStyle = .fullScreen
             self.viewController?.present(nav, animated: true)
