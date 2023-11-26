@@ -22,6 +22,14 @@ class BrandBannerItemCell: UICollectionViewCell {
         return imageView
     }()
     
+    private lazy var brandLargeImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = .clear
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+    
     private lazy var brandNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(.jostBold, size: 20)
@@ -39,6 +47,12 @@ class BrandBannerItemCell: UICollectionViewCell {
     }()
     
     private lazy var actionButton: OutlinedButton = {
+        let button = OutlinedButton()
+        button.addTarget(self, action: #selector(self.handleSeeAllAction), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var actionLargeButton: OutlinedButton = {
         let button = OutlinedButton()
         button.addTarget(self, action: #selector(self.handleSeeAllAction), for: .touchUpInside)
         return button
@@ -66,6 +80,8 @@ class BrandBannerItemCell: UICollectionViewCell {
         self.contentView.addSubview(self.brandNameLabel)
         self.contentView.addSubview(self.brandDescLabel)
         self.contentView.addSubview(self.actionButton)
+        self.contentView.addSubview(self.brandLargeImageView)
+        self.contentView.addSubview(self.actionLargeButton)
         
         self.brandImageView.snp.makeConstraints {
             $0.top.equalTo(self.brandNameLabel.snp.top)
@@ -74,16 +90,22 @@ class BrandBannerItemCell: UICollectionViewCell {
             $0.height.equalTo(90)
         }
         
+        self.brandLargeImageView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(16)
+            $0.trailing.equalToSuperview().offset(-20)
+            $0.bottom.equalToSuperview().offset(-16)
+        }
+        
         self.brandNameLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(16)
             $0.leading.equalToSuperview().offset(10)
             $0.trailing.equalTo(self.brandImageView.snp.leading).offset(-4)
+            $0.trailing.equalTo(self.brandLargeImageView.snp.leading).offset(-4)
         }
         
         self.brandDescLabel.snp.makeConstraints {
             $0.top.equalTo(self.brandNameLabel.snp.bottom).offset(12)
-            $0.leading.equalToSuperview().offset(10)
-            $0.trailing.equalTo(self.brandImageView.snp.leading).offset(-4)
+            $0.leading.trailing.equalTo(self.brandNameLabel)
         }
         
         self.actionButton.snp.makeConstraints {
@@ -92,17 +114,34 @@ class BrandBannerItemCell: UICollectionViewCell {
             $0.trailing.equalToSuperview().offset(-10)
             $0.bottom.equalToSuperview().offset(-16)
         }
+        
+        self.actionLargeButton.snp.makeConstraints {
+            $0.top.greaterThanOrEqualTo(self.brandDescLabel.snp.bottom).offset(10).priority(.low)
+            $0.leading.equalToSuperview().offset(10)
+            $0.trailing.equalTo(self.brandLargeImageView.snp.leading).offset(-20)
+            $0.bottom.equalToSuperview().offset(-16)
+        }
     }
     
-    func configure(viewModel: BrandBannerItemCellProtocol) {
+    func configure(viewModel: BrandBannerItemCellProtocol, isLarge: Bool) {
         self.brandNameLabel.text = viewModel.title
         self.brandDescLabel.text = viewModel.description
         
+        self.brandImageView.isHidden = isLarge == true
         self.brandImageView.loadImage(url: viewModel.imageURL)
+        
+        self.brandLargeImageView.isHidden = isLarge != true
+        self.brandLargeImageView.loadImage(url: viewModel.imageURL)
+        
+        self.actionButton.isHidden = isLarge == true
         self.actionButton.setTitle(viewModel.buttonText, for: .normal)
+        
+        self.actionLargeButton.isHidden = isLarge != true
+        self.actionLargeButton.setTitle(viewModel.buttonText, for: .normal)
         
         let textColor = UIColor.colorFromHex(hex: viewModel.textColor) ?? .black
         self.actionButton.color = textColor
+        self.actionLargeButton.color = textColor
         
         let bgColor = UIColor.colorFromHex(hex: viewModel.backgroundColor)
         self.contentView.backgroundColor = bgColor

@@ -9,6 +9,8 @@
 import UIKit
 
 class BrandBannersView: UIView {
+    // MARK: - Private Properties -
+    
     private lazy var collectionView: IntrinsicCollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = IntrinsicCollectionView(frame: .zero, collectionViewLayout: layout)
@@ -20,6 +22,8 @@ class BrandBannersView: UIView {
     }()
     
     private var brandBannersResponseModel: BrandBannersResponseModel?
+    
+    //
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,8 +42,6 @@ class BrandBannersView: UIView {
         self.collectionView.snp.makeConstraints {
             $0.trailing.leading.top.bottom.equalToSuperview()
         }
-        
-        self.getBrandBanners()
     }
     
     private func getBrandBanners() {
@@ -59,6 +61,16 @@ class BrandBannersView: UIView {
     }
 }
 
+extension BrandBannersView: ViewLifeCycleProtocol {
+    func viewDidLoad() {
+        self.getBrandBanners()
+    }
+    
+    func reload() {
+        self.getBrandBanners()
+    }
+}
+
 extension BrandBannersView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.brandBannersResponseModel?.content?.count ?? 0
@@ -68,7 +80,7 @@ extension BrandBannersView: UICollectionViewDataSource {
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(withClassAndIdentifier: BrandBannerItemCell.self, for: indexPath)
         if let item = self.brandBannersResponseModel?.content?[indexPath.row] {
-            cell.configure(viewModel: item)
+            cell.configure(viewModel: item, isLarge: indexPath.row == 0)
             cell.delegate = self
         }
         
@@ -96,7 +108,7 @@ extension BrandBannersView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        return UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 16)
     }
     
     func collectionView(_ collectionView: UICollectionView,

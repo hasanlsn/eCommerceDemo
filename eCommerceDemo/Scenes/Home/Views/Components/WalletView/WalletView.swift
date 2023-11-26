@@ -19,7 +19,7 @@ class WalletView: UIView {
     }()
     
     private lazy var containerView: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.backgroundColor = UIColor.color0551A0
         view.roundCorners(corners: [.bottomLeft, .topLeft], radius: 8)
         return view
@@ -106,8 +106,6 @@ class WalletView: UIView {
         self.isUserInteractionEnabled = false
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleShowBalanceAction))
         self.addGestureRecognizer(tapGesture)
-        
-        self.getMyWallet()
     }
     
     // MARK: - Actions -
@@ -138,5 +136,15 @@ class WalletView: UIView {
                 print(error.localizedDescription)
             }
         }
+    }
+}
+
+extension WalletView: ViewLifeCycleProtocol {
+    func viewDidLoad() {
+        self.getMyWallet()
+    }
+    
+    func reload() {
+        self.getMyWallet()
     }
 }

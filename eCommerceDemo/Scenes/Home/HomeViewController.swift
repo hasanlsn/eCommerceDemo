@@ -13,8 +13,10 @@ protocol HomeDisplayLogic: AnyObject {
     func displayLoginUpdate(viewModel: Home.User.ViewModel)
 }
 
-final class HomeViewController: BaseViewController {
+final class HomeViewController: BaseViewController, ViewLifeCycleSenderProtocol {
     // MARK: - IBOutlets -
+    
+    var lifeCycleObservedViews: [ViewLifeCycleProtocol] = []
     
     //
     
@@ -106,6 +108,8 @@ final class HomeViewController: BaseViewController {
         self.prepareViews()
         
         self.interactor?.viewDidLoad()
+        
+        self.lifeCycleObservedViews.viewDidLoadAll()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -137,6 +141,11 @@ final class HomeViewController: BaseViewController {
             $0.width.equalTo(self.view.snp.width)
             $0.height.equalTo(self.view.snp.height).priority(.low)
         }
+        
+        self.lifeCycleObservedViews = [self.walletView,
+                                       self.categoriesView,
+                                       self.productOffersView,
+                                       self.brandBannersView]
     }
     
     //
@@ -174,6 +183,8 @@ extension HomeViewController: LoginViewControllerDelegate {
     func userDidLogin(_ viewController: LoginViewController) {
         viewController.dismiss(animated: true) { [weak self] in
             self?.interactor?.userDidLogin()
+            
+            self?.lifeCycleObservedViews.reloadAll()
         }
     }
 }

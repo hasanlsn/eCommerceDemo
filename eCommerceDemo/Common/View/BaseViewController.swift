@@ -9,6 +9,12 @@
 import UIKit
 
 class BaseViewController: UIViewController {
+    // MARK: - Private Properties -
+    
+    //
+    
+    // MARK: - Public Properties -
+    
     var hideTitleView: Bool = false {
         didSet {
             if hideTitleView == true {
@@ -17,9 +23,11 @@ class BaseViewController: UIViewController {
         }
     }
     
+    //
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.view.backgroundColor = .white
     }
 }

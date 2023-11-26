@@ -15,4 +15,5 @@ extension UIImage {
     static let walletBg = UIImage(named: "wallet_bg")!
     static let pageIndicator = UIImage(named: "page_indicator")!
     static let selectedPageIndicator = UIImage(named: "selected_page_indicator")!
+    static let arrowRight = UIImage(named: "arrow_right")!
 }

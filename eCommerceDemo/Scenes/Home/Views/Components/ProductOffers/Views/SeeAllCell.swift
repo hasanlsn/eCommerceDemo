@@ -15,7 +15,7 @@ class SeeAllCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = .clear
         imageView.clipsToBounds = true
-        imageView.image = UIImage(systemName: "arrow.forward")
+        imageView.image = .arrowRight
         imageView.tintColor = UIColor.color0551A0
         return imageView
     }()

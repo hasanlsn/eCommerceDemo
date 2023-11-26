@@ -38,8 +38,6 @@ class CategoriesView: UIView {
         self.collectionView.snp.makeConstraints {
             $0.trailing.leading.top.bottom.equalToSuperview()
         }
-        
-        self.getCategories()
     }
     
     private func getCategories() {
@@ -49,11 +47,23 @@ class CategoriesView: UIView {
             case .success(let categoriesResponseModel):
                 self?.categoriesResponseModel = categoriesResponseModel
                 
-                self?.collectionView.reloadData()
+                DispatchQueue.main.async {
+                    self?.collectionView.reloadData()
+                }
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
+    }
+}
+
+extension CategoriesView: ViewLifeCycleProtocol {
+    func viewDidLoad() {
+        self.getCategories()
+    }
+    
+    func reload() {
+        self.getCategories()
     }
 }
 

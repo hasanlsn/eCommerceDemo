@@ -88,7 +88,7 @@ class ProductOfferSectionView: UIView {
             $0.top.equalTo(self.titleLabel.snp.bottom).offset(20)
             $0.trailing.leading.equalToSuperview()
             $0.height.equalTo(200)
-            $0.bottom.equalTo(-16)
+            $0.bottom.equalTo(-20)
         }
     }
 }
@@ -126,7 +126,7 @@ extension ProductOfferSectionView: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 1 {
-            return CGSize(width: 140, height: 194)
+            return CGSize(width: 131, height: 194)
         }
         
         return CGSize(width: 112, height: 194)
@@ -135,7 +135,7 @@ extension ProductOfferSectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        return UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -144,7 +144,8 @@ extension ProductOfferSectionView: UICollectionViewDelegateFlowLayout {
         return 22
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, 
+                        didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 1 {
             return
         }

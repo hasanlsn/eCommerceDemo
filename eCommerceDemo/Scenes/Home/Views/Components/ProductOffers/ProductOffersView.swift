@@ -9,6 +9,7 @@
 import UIKit
 
 class ProductOffersView: UIView {
+    // MARK: - Private Properties -
     
     private lazy var containerStackView: UIStackView = {
         let stackView = UIStackView()
@@ -17,6 +18,8 @@ class ProductOffersView: UIView {
     }()
     
     private var productOffersResponseModel: ProductOffersResponseModel?
+    
+    //
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,8 +38,6 @@ class ProductOffersView: UIView {
         self.containerStackView.snp.makeConstraints {
             $0.trailing.leading.top.bottom.equalToSuperview()
         }
-        
-        self.getOffers()
     }
     
     private func getOffers() {
@@ -46,15 +47,36 @@ class ProductOffersView: UIView {
             case .success(let productOffersResponseModel):
                 self?.productOffersResponseModel = productOffersResponseModel
                 
-                if let content = productOffersResponseModel.content {
-                    for item in content {
-                        let sectionView = ProductOfferSectionView(offerItem: item)
-                        self?.containerStackView.addArrangedSubview(sectionView)
-                    }
-                }
+                self?.addOfferSections()
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    private func addOfferSections() {
+        DispatchQueue.main.async {
+            for view in self.containerStackView.arrangedSubviews {
+                self.containerStackView.removeArrangedSubview(view)
+                view.removeFromSuperview()
+            }
+            
+            if let content = self.productOffersResponseModel?.content {
+                for item in content {
+                    let sectionView = ProductOfferSectionView(offerItem: item)
+                    self.containerStackView.addArrangedSubview(sectionView)
+                }
+            }
+        }
+    }
+}
+
+extension ProductOffersView: ViewLifeCycleProtocol {
+    func viewDidLoad() {
+        self.getOffers()
+    }
+    
+    func reload() {
+        self.getOffers()
     }
 }
