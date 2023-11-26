@@ -68,6 +68,7 @@ extension BrandBannersView: UICollectionViewDataSource {
         let cell = collectionView.dequeueCell(withClassAndIdentifier: BrandBannerItemCell.self, for: indexPath)
         if let item = self.brandBannersResponseModel?.content?[indexPath.row] {
             cell.configure(viewModel: item)
+            cell.delegate = self
         }
         
         return cell
@@ -104,6 +105,17 @@ extension BrandBannersView: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 12
+    }
+}
+
+extension BrandBannersView: BrandBannerItemCellDelegate {
+    func didTapSeeAll(_ cell: BrandBannerItemCell) {
+        guard let indexPath = self.collectionView.indexPath(for: cell) else {
+            return
+        }
+        
+        let item = self.brandBannersResponseModel?.content?[indexPath.row].url
+        HAlert.showSystemAlert(title: "Marka url: ", message: item, buttonTitle: "Tamam")
     }
 }
 

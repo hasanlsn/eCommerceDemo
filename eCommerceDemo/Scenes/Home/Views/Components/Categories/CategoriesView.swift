@@ -58,11 +58,13 @@ class CategoriesView: UIView {
 }
 
 extension CategoriesView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         return self.categoriesResponseModel?.content?.count ?? 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(withClassAndIdentifier: CategoryItemCell.self, for: indexPath)
         if let item = self.categoriesResponseModel?.content?[indexPath.row] {
             cell.configure(viewModel: item)
@@ -99,6 +101,11 @@ extension CategoriesView: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = self.categoriesResponseModel?.content?[indexPath.row].url
+        HAlert.showSystemAlert(title: "Kategori url: ", message: item, buttonTitle: "Tamam")
     }
 }
 

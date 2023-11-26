@@ -25,7 +25,7 @@ class WalletView: UIView {
     private lazy var containerView: UIView = {
        let view = UIView()
         view.backgroundColor = UIColor.color0551A0
-        view.roundCorners(radius: 8)
+        view.roundCorners(corners: [.bottomLeft, .topLeft], radius: 8)
         return view
     }()
     
@@ -89,7 +89,7 @@ class WalletView: UIView {
             $0.leading.equalToSuperview()
             $0.top.equalToSuperview().offset(4)
             $0.bottom.equalToSuperview().offset(-4)
-            $0.trailing.equalToSuperview().offset(16 + 8)
+            $0.trailing.equalToSuperview().offset(16)
         }
         
         self.bgImageView.snp.makeConstraints {
@@ -109,14 +109,21 @@ class WalletView: UIView {
             $0.trailing.equalToSuperview().offset(-16)
         }
         
+        self.isUserInteractionEnabled = false
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleShowBalanceAction))
+        self.addGestureRecognizer(tapGesture)
+        
         self.getMyWallet()
     }
     
     // MARK: - Actions -
     
     @objc
-    private func handleLoginAction() {
-        self.delegate?.didTapLogin(self)
+    private func handleShowBalanceAction() {
+        let balance = self.walletResponseModel?.balance?.text ?? ""
+        let symbol = self.walletResponseModel?.balance?.symbol ?? ""
+        let message = "\(balance)\(symbol)"
+        HAlert.showSystemAlert(title: "Cüzdan Bakiyesi: ", message: message, buttonTitle: "Tamam")
     }
     
     //
@@ -127,6 +134,7 @@ class WalletView: UIView {
             switch result {
             case .success(let walletResponseModel):
                 self?.walletResponseModel = walletResponseModel
+                self?.isUserInteractionEnabled = true
                 
                 if let balance = walletResponseModel.balance?.text,
                    let symbol = walletResponseModel.balance?.symbol {

@@ -143,6 +143,14 @@ extension ProductOfferSectionView: UICollectionViewDelegateFlowLayout {
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 22
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            return
+        }
+        
+        HRoutingManager.routeToProductDetail()
+    }
 }
 
 extension SkuOfferModel: OfferProductItemCellProtocol {

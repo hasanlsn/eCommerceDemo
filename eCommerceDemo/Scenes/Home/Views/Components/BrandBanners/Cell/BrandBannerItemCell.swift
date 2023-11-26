@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol BrandBannerItemCellDelegate: AnyObject {
+    func didTapSeeAll(_ cell: BrandBannerItemCell)
+}
+
 class BrandBannerItemCell: UICollectionViewCell {
     // MARK: - Private Properties -
     
@@ -51,8 +55,11 @@ class BrandBannerItemCell: UICollectionViewCell {
             button.titleLabel?.font = UIFont(.jostBold, size: 12)
         }
         
+        button.addTarget(self, action: #selector(self.handleSeeAllAction), for: .touchUpInside)
         return button
     }()
+    
+    weak var delegate: BrandBannerItemCellDelegate?
     
     //
     
@@ -117,6 +124,11 @@ class BrandBannerItemCell: UICollectionViewCell {
         
         let bgColor = UIColor.colorFromHex(hex: viewModel.backgroundColor)
         self.contentView.backgroundColor = bgColor
+    }
+    
+    @objc
+    private func handleSeeAllAction() {
+        self.delegate?.didTapSeeAll(self)
     }
 }
 

@@ -111,8 +111,6 @@ final class HomeViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        self.router?.navigate(to: .productDetail)
     }
     
     //

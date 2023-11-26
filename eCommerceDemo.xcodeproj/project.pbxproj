@@ -78,6 +78,9 @@
 		1627DA8C2B135B3F0042FAEF /* ProductNutritionItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1627DA8B2B135B3F0042FAEF /* ProductNutritionItemCell.swift */; };
 		1627DA8E2B135F060042FAEF /* ProductNutritionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1627DA8D2B135F060042FAEF /* ProductNutritionHeaderView.swift */; };
 		1627DA902B1362D10042FAEF /* ProductNutritionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1627DA8F2B1362D10042FAEF /* ProductNutritionFooterView.swift */; };
+		1627DA922B1366490042FAEF /* HAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1627DA912B1366490042FAEF /* HAlert.swift */; };
+		1627DA942B1366BE0042FAEF /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1627DA932B1366BE0042FAEF /* UIViewControllerExt.swift */; };
+		1627DA962B136AA80042FAEF /* HRoutingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1627DA952B136AA80042FAEF /* HRoutingManager.swift */; };
 		169BC6FB2B12792C00348814 /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = 169BC6FA2B12792C00348814 /* PanModal */; };
 		169BC7042B12798700348814 /* ProductInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169BC6FD2B12798700348814 /* ProductInfoPresenter.swift */; };
 		169BC7052B12798700348814 /* ProductInfoWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169BC6FE2B12798700348814 /* ProductInfoWorker.swift */; };
@@ -220,6 +223,9 @@
 		1627DA8B2B135B3F0042FAEF /* ProductNutritionItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductNutritionItemCell.swift; sourceTree = "<group>"; };
 		1627DA8D2B135F060042FAEF /* ProductNutritionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductNutritionHeaderView.swift; sourceTree = "<group>"; };
 		1627DA8F2B1362D10042FAEF /* ProductNutritionFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductNutritionFooterView.swift; sourceTree = "<group>"; };
+		1627DA912B1366490042FAEF /* HAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HAlert.swift; sourceTree = "<group>"; };
+		1627DA932B1366BE0042FAEF /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
+		1627DA952B136AA80042FAEF /* HRoutingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRoutingManager.swift; sourceTree = "<group>"; };
 		169BC6FD2B12798700348814 /* ProductInfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoPresenter.swift; sourceTree = "<group>"; };
 		169BC6FE2B12798700348814 /* ProductInfoWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoWorker.swift; sourceTree = "<group>"; };
 		169BC6FF2B12798700348814 /* ProductInfoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoRouter.swift; sourceTree = "<group>"; };
@@ -463,6 +469,7 @@
 				161E40D52B1003CB0007D793 /* UIViewExt.swift */,
 				16C6A53B2B115760004ACE5C /* UIImageExt.swift */,
 				16C6A53D2B115AB3004ACE5C /* UITextFieldExt.swift */,
+				1627DA932B1366BE0042FAEF /* UIViewControllerExt.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -600,6 +607,8 @@
 		16C6A51B2B111FA2004ACE5C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				1627DA912B1366490042FAEF /* HAlert.swift */,
+				1627DA952B136AA80042FAEF /* HRoutingManager.swift */,
 				161E404F2B0F7C870007D793 /* HConstants.swift */,
 				16C6A5192B111F1C004ACE5C /* HAppearance.swift */,
 				16C6A5482B1161F0004ACE5C /* HKeychainManager.swift */,
@@ -908,6 +917,7 @@
 				16C6A50B2B10FF94004ACE5C /* ViewLifeCycleProtocol.swift in Sources */,
 				161E40752B0F904F0007D793 /* HomeViewController.swift in Sources */,
 				16C6A56D2B1271FC004ACE5C /* BaseTableViewCell.swift in Sources */,
+				1627DA962B136AA80042FAEF /* HRoutingManager.swift in Sources */,
 				161E40622B0F87BE0007D793 /* CodableExt.swift in Sources */,
 				161E40D62B1003CB0007D793 /* UIViewExt.swift in Sources */,
 				161E408B2B0FA8820007D793 /* CategoryItemCell.swift in Sources */,
@@ -922,10 +932,12 @@
 				161E40D82B1006820007D793 /* BrandBannerItemCell.swift in Sources */,
 				161E40472B0F7B240007D793 /* HTTPMethod.swift in Sources */,
 				1627DA832B1358060042FAEF /* ProductNutritionsPresenter.swift in Sources */,
+				1627DA922B1366490042FAEF /* HAlert.swift in Sources */,
 				161E40812B0F92110007D793 /* BrandBannersResponseModel.swift in Sources */,
 				161E40722B0F904F0007D793 /* HomeWorker.swift in Sources */,
 				16C6A5692B126847004ACE5C /* ProductInfoCell.swift in Sources */,
 				161E40712B0F904F0007D793 /* HomePresenter.swift in Sources */,
+				1627DA942B1366BE0042FAEF /* UIViewControllerExt.swift in Sources */,
 				169BC7042B12798700348814 /* ProductInfoPresenter.swift in Sources */,
 				16C6A5232B113AF4004ACE5C /* PriceView.swift in Sources */,
 				16C6A5592B12203A004ACE5C /* ProductDetailWorker.swift in Sources */,
