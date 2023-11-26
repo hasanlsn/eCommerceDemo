@@ -209,8 +209,16 @@ extension ProductInfoViewController: WKNavigationDelegate {
             }
             
             let script = """
-var body = document.getElementsByTagName('body')[0];
-body.style.fontSize = "24px";
+var meta1 = document.createElement('meta');
+meta1.setAttribute('http-equiv', 'X-UA-Compatible');
+meta1.setAttribute('content', 'IE=Edge');
+document.getElementsByTagName('head')[0].appendChild(meta1);
+
+var meta2 = document.createElement('meta');
+meta2.setAttribute('name', 'viewport');
+meta2.setAttribute('content', 'width=device-width, initial-scale=1.0');
+document.getElementsByTagName('head')[0].appendChild(meta2);
+
 document.body.scrollHeight;
 """
             webView.evaluateJavaScript(script, completionHandler: { [weak self] (result, error) in
@@ -231,7 +239,7 @@ extension ProductInfoViewController: DrawerPresentable {
     
     var panContentHeight: CGFloat? {
         if self.webView.isHidden == false {
-            return self.headerContainerView.bounds.size.height + self.webViewContentHeight
+            return self.headerContainerView.bounds.size.height + self.webViewContentHeight + 16
         }
         
         if self.textView.isHidden == false {

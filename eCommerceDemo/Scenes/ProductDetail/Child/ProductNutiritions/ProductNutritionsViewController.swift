@@ -233,6 +233,6 @@ extension ProductNutritionsViewController: DrawerPresentable {
     }
     
     var panContentHeight: CGFloat? {
-        return self.headerContainerView.bounds.size.height + self.tableView.contentSize.height
+        return self.headerContainerView.bounds.size.height + self.tableView.contentSize.height + 16
     }
 }
