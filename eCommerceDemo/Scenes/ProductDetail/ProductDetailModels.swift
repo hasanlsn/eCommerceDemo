@@ -24,7 +24,7 @@ enum ProductDetail {
         
         struct ViewModel {
             enum OptionItemType {
-                case detail
+                case info
                 case nutritions
             }
             

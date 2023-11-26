@@ -146,8 +146,8 @@ extension ProductDetailViewController: UITableViewDelegate {
         switch item {
         case .optionItem(_, let optionType):
             switch optionType {
-            case .detail:
-                self.router?.navigate(to: .detail)
+            case .info:
+                self.router?.navigate(to: .info)
             case .nutritions:
                 self.router?.navigate(to: .nutritions)
             }

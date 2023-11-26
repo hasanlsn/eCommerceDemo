@@ -9,7 +9,7 @@
 import UIKit
 
 enum ProductDetailNavigationOption {
-    case detail
+    case info
     case nutritions
 }
 
@@ -30,7 +30,15 @@ final class ProductDetailRouter: NSObject, ProductDetailDataPassing {
 
 extension ProductDetailRouter: ProductDetailRoutingLogic {
     func navigate(to option: ProductDetailNavigationOption) {
-        
+        switch option {
+        case .info:
+            let destinationVC = ProductInfoViewController()
+            let destinationDS = destinationVC.router?.dataStore
+            destinationDS?.productDetailResponseModel = self.dataStore?.productDetailResponseModel
+            self.viewController?.presentPanModal(destinationVC)
+        case .nutritions:
+            break
+        }
     }
 }
 

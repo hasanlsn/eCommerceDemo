@@ -6,7 +6,7 @@
 //  Copyright © 2023 Hasan Ali Asan. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension Optional where Wrapped == String {
     var nilOrIsEmpty: Bool {
@@ -29,5 +29,31 @@ extension String {
         let phoneRegex = "^5(?:[01345][0-9])(?:[0-9]{3})(?:[0-9]{2})(?:[0-9]{2})$"
         let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
         return phoneTest.evaluate(with: self)
+    }
+}
+
+extension NSMutableAttributedString {
+    func bold(_ value: String,
+              fontSize: CGFloat = 12,
+              color: UIColor = .color555555) -> NSMutableAttributedString {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont(.jostBold, size: fontSize),
+            .foregroundColor: color
+        ]
+        
+        self.append(NSAttributedString(string: value, attributes: attributes))
+        return self
+    }
+    
+    func regular(_ value:String,
+                 fontSize: CGFloat = 12,
+                 color: UIColor = .color555555) -> NSMutableAttributedString {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font : UIFont(.jostRegular, size: fontSize),
+            .foregroundColor: color
+        ]
+        
+        self.append(NSAttributedString(string: value, attributes: attributes))
+        return self
     }
 }

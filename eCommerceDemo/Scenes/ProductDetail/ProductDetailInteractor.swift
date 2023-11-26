@@ -12,13 +12,15 @@ protocol ProductDetailBusinessLogic: AnyObject {
     func viewDidLoad()
 }
 
-protocol ProductDetailDataStore: AnyObject { }
+protocol ProductDetailDataStore: AnyObject {
+    var productDetailResponseModel: ProductDetailResponseModel? { get set }
+}
 
 final class ProductDetailInteractor {
     var presenter: ProductDetailPresentationLogic?
     private lazy var worker: ProductDetailWorkProtocol = ProductDetailWorker()
     
-    private var productDetailResponseModel: ProductDetailResponseModel?
+    var productDetailResponseModel: ProductDetailResponseModel?
 }
 
 // MARK: - ProductDetailBusinessLogic -

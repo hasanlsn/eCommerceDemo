@@ -59,7 +59,7 @@ extension ProductDetailPresenter: ProductDetailPresentationLogic {
         var optionsSectionItems: [ProductDetail.Detail.ViewModel.Item] = []
         
         // options
-        optionsSectionItems.append(.optionItem(title: "Ürün Bilgileri", optionType: .detail))
+        optionsSectionItems.append(.optionItem(title: "Ürün Bilgileri", optionType: .info))
         optionsSectionItems.append(.optionItem(title: "Besin Değerleri", optionType: .nutritions))
         //
         
