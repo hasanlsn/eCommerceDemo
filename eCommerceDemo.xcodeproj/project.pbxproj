@@ -593,7 +593,6 @@
 				16C6A5112B110314004ACE5C /* Categories */,
 				16C6A5102B11030B004ACE5C /* ProductOffers */,
 				16C6A5142B1108D1004ACE5C /* BrandBanners */,
-				16C6A50A2B10FF94004ACE5C /* ViewLifeCycleProtocol.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -643,6 +642,7 @@
 			isa = PBXGroup;
 			children = (
 				166E74F72B13DBCD00EF98DE /* Drawer */,
+				16C6A50A2B10FF94004ACE5C /* ViewLifeCycleProtocol.swift */,
 				1627DA992B1372C60042FAEF /* NavigationBackView.swift */,
 				16C6A5392B11527A004ACE5C /* PrimaryTextField.swift */,
 				16C6A5372B114ED1004ACE5C /* PrimaryButton.swift */,

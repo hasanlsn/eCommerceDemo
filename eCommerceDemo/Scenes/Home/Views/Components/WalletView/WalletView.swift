@@ -121,8 +121,14 @@ class WalletView: UIView {
     //
     
     private func getMyWallet() {
+        self.transform = CGAffineTransform(translationX: 200, y: 0)
+        
         HNetworkManager.shared.sendRequest(with: ProfileEndpoint.getMyWallet)
         { [weak self] (result: HNetworkResult<MyWalletResponseModel>) in
+            UIView.animate(withDuration: 0.5) {
+                self?.transform = .identity
+            }
+            
             switch result {
             case .success(let walletResponseModel):
                 self?.walletResponseModel = walletResponseModel
