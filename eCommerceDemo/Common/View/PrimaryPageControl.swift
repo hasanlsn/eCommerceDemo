@@ -25,8 +25,11 @@ class PrimaryPageControl: UIPageControl {
         self.pageIndicatorTintColor = UIColor.colorE5E5E5
         self.clipsToBounds = false
         
-        if #available(iOS 16.0, *) {
+        if #available(iOS 14.0, *) {
             self.preferredIndicatorImage = .pageIndicator
+        }
+        
+        if #available(iOS 16.0, *) {
             self.preferredCurrentPageIndicatorImage = .selectedPageIndicator
         }
     }

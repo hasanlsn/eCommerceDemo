@@ -35,8 +35,11 @@ extension ProductDetailInteractor: ProductDetailBusinessLogic, ProductDetailData
 
 extension ProductDetailInteractor {
     private func getProductDetail(productId: String) {
+        HIndicator.show()
         self.worker.getProductDetail(productId: productId)
         { [weak self] result in
+            HIndicator.hide()
+            
             switch result {
             case .success(let productDetailResponseModel):
                 self?.productDetailResponseModel = productDetailResponseModel

@@ -36,7 +36,10 @@ extension LoginInteractor: LoginBusinessLogic, LoginDataStore {
 
 extension LoginInteractor {
     private func login(phone: String) {
+        HIndicator.show()
         self.worker.login(phone: phone) { [weak self] result in
+            HIndicator.hide()
+            
             switch result {
             case .success(let loginResponseModel):
                 let loginInfo = loginResponseModel.toJSONString() ?? ""

@@ -134,6 +134,9 @@
 		16C6A5692B126847004ACE5C /* ProductInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C6A5682B126847004ACE5C /* ProductInfoCell.swift */; };
 		16C6A56B2B12700C004ACE5C /* ProductDetailOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C6A56A2B12700C004ACE5C /* ProductDetailOptionCell.swift */; };
 		16C6A56D2B1271FC004ACE5C /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C6A56C2B1271FC004ACE5C /* BaseTableViewCell.swift */; };
+		16F082672B1510760073F888 /* SVProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 16F082662B1510760073F888 /* SVProgressHUD */; };
+		16F082692B1510AC0073F888 /* HIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F082682B1510AB0073F888 /* HIndicator.swift */; };
+		16F0826B2B1511060073F888 /* UIApplicationExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F0826A2B1511060073F888 /* UIApplicationExt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -279,6 +282,8 @@
 		16C6A5682B126847004ACE5C /* ProductInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductInfoCell.swift; sourceTree = "<group>"; };
 		16C6A56A2B12700C004ACE5C /* ProductDetailOptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailOptionCell.swift; sourceTree = "<group>"; };
 		16C6A56C2B1271FC004ACE5C /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		16F082682B1510AB0073F888 /* HIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HIndicator.swift; sourceTree = "<group>"; };
+		16F0826A2B1511060073F888 /* UIApplicationExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,6 +294,7 @@
 				161E40672B0F8FDA0007D793 /* SnapKit in Frameworks */,
 				16C6A5412B115DE3004ACE5C /* AnyFormatKit in Frameworks */,
 				169BC6FB2B12792C00348814 /* PanModal in Frameworks */,
+				16F082672B1510760073F888 /* SVProgressHUD in Frameworks */,
 				161E40552B0F84300007D793 /* Kingfisher in Frameworks */,
 				161E403D2B0F78DA0007D793 /* Alamofire in Frameworks */,
 				16C6A5472B1161E6004ACE5C /* KeychainAccess in Frameworks */,
@@ -476,6 +482,7 @@
 				16C6A53B2B115760004ACE5C /* UIImageExt.swift */,
 				16C6A53D2B115AB3004ACE5C /* UITextFieldExt.swift */,
 				1627DA932B1366BE0042FAEF /* UIViewControllerExt.swift */,
+				16F0826A2B1511060073F888 /* UIApplicationExt.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -627,6 +634,7 @@
 				161E404F2B0F7C870007D793 /* HConstants.swift */,
 				16C6A5192B111F1C004ACE5C /* HAppearance.swift */,
 				16C6A5482B1161F0004ACE5C /* HKeychainManager.swift */,
+				16F082682B1510AB0073F888 /* HIndicator.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -762,6 +770,7 @@
 				16C6A5402B115DE3004ACE5C /* AnyFormatKit */,
 				16C6A5462B1161E6004ACE5C /* KeychainAccess */,
 				169BC6FA2B12792C00348814 /* PanModal */,
+				16F082662B1510760073F888 /* SVProgressHUD */,
 			);
 			productName = eCommerceDemo;
 			productReference = 161E40082B0F60DB0007D793 /* eCommerceDemo.app */;
@@ -843,6 +852,7 @@
 				16C6A53F2B115DE3004ACE5C /* XCRemoteSwiftPackageReference "AnyFormatKit" */,
 				16C6A5452B1161E5004ACE5C /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				169BC6F92B12792C00348814 /* XCRemoteSwiftPackageReference "PanModal" */,
+				16F082652B1510760073F888 /* XCRemoteSwiftPackageReference "SVProgressHUD" */,
 			);
 			productRefGroup = 161E40092B0F60DB0007D793 /* Products */;
 			projectDirPath = "";
@@ -919,6 +929,7 @@
 				161E40842B0F9F320007D793 /* ProductModel.swift in Sources */,
 				16C6A5082B10FB1B004ACE5C /* CategoriesView.swift in Sources */,
 				1627DA882B1358060042FAEF /* ProductNutritionsInteractor.swift in Sources */,
+				16F082692B1510AC0073F888 /* HIndicator.swift in Sources */,
 				161E40CE2B0FDADF0007D793 /* UIColorExt.swift in Sources */,
 				166E74FA2B13DBD800EF98DE /* DrawerViewController.swift in Sources */,
 				16C6A54E2B11ED5D004ACE5C /* WalletView.swift in Sources */,
@@ -964,6 +975,7 @@
 				169BC7062B12798700348814 /* ProductInfoRouter.swift in Sources */,
 				161E40CC2B0FD6E70007D793 /* UIFontExt.swift in Sources */,
 				16C6A5582B12203A004ACE5C /* ProductDetailPresenter.swift in Sources */,
+				16F0826B2B1511060073F888 /* UIApplicationExt.swift in Sources */,
 				16C6A5632B1225EB004ACE5C /* ImageCarouselItemCell.swift in Sources */,
 				161E40492B0F7B240007D793 /* HEndPointType.swift in Sources */,
 				161E404B2B0F7B240007D793 /* HNetworkManager.swift in Sources */,
@@ -1389,6 +1401,14 @@
 				kind = branch;
 			};
 		};
+		16F082652B1510760073F888 /* XCRemoteSwiftPackageReference "SVProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SVProgressHUD/SVProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1421,6 +1441,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 16C6A5452B1161E5004ACE5C /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
+		};
+		16F082662B1510760073F888 /* SVProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16F082652B1510760073F888 /* XCRemoteSwiftPackageReference "SVProgressHUD" */;
+			productName = SVProgressHUD;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
