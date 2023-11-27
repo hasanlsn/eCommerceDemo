@@ -10,6 +10,7 @@ import Foundation
 
 protocol HomeWorkProtocol {
     func getLoginInfo() -> LoginResponseModel?
+    func removeLoginInfo()
 }
 
 final class HomeWorker: HomeWorkProtocol {
@@ -21,5 +22,9 @@ final class HomeWorker: HomeWorkProtocol {
         
         let model = LoginResponseModel.createWith(JSON: infoDictionary)
         return model
+    }
+    
+    func removeLoginInfo() {
+        HKeychainManager.removeItem(forKey: HConstants.Keychain.LOGIN_INFO_KEY)
     }
 }

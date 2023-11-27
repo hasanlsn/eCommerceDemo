@@ -177,6 +177,19 @@ extension HomeViewController: AuthViewDelegate {
     func didTapLogin(_ authView: AuthView) {
         self.router?.navigate(to: .login(delegate: self))
     }
+    
+    func didTapLogout(_ authView: AuthView) {
+        HAlert.showSystemAlert(title: "Uyarı!",
+                               message: "Çıkış yapmak istediğinizden emin misiniz?", 
+                               leftButton: "İptal",
+                               rightButton: "Çıkış Yap",
+                               vc: self,
+                               style: .alert,
+                               completionLeft: nil)
+        { [weak self] in
+            self?.interactor?.userDidLogout()
+        }
+    }
 }
 
 extension HomeViewController: LoginViewControllerDelegate {

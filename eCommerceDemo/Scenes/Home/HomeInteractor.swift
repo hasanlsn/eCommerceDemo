@@ -11,6 +11,7 @@ import Foundation
 protocol HomeBusinessLogic: AnyObject { 
     func viewDidLoad()
     func userDidLogin()
+    func userDidLogout()
 }
 
 protocol HomeDataStore: AnyObject { }
@@ -28,6 +29,12 @@ extension HomeInteractor: HomeBusinessLogic, HomeDataStore {
     }
     
     func userDidLogin() {
+        self.checkLogin()
+    }
+    
+    func userDidLogout() {
+        self.worker.removeLoginInfo()
+        
         self.checkLogin()
     }
     

@@ -10,6 +10,7 @@ import UIKit
 
 protocol AuthViewDelegate: AnyObject {
     func didTapLogin(_ authView: AuthView)
+    func didTapLogout(_ authView: AuthView)
 }
 
 class AuthView: UIView {
@@ -87,20 +88,24 @@ class AuthView: UIView {
     }
     
     func updateAuthInfo(isLoggedIn: Bool, nameAndSurname: String?) {
+        self.isLoggedIn = isLoggedIn
+        
         if isLoggedIn == true {
             self.titleLabel.text = "Hoş geldin \(nameAndSurname ?? ""),"
         } else {
             self.titleLabel.text = "Giriş Yap"
         }
-        
-        self.titleLabel.isUserInteractionEnabled = isLoggedIn == false
     }
     
     // MARK: - Actions -
     
     @objc
     private func handleLoginAction() {
-        self.delegate?.didTapLogin(self)
+        if self.isLoggedIn == true {
+            self.delegate?.didTapLogout(self)
+        } else {
+            self.delegate?.didTapLogin(self)
+        }
     }
     
     //
