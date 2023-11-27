@@ -71,28 +71,22 @@ class ProductInfoCell: BaseTableViewCell {
         self.nameLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(16)
             $0.top.equalToSuperview().offset(16)
+            $0.trailing.greaterThanOrEqualTo(self.priceView.snp.leading).offset(-8).priority(.low)
         }
         
         self.brandLabel.snp.makeConstraints {
-            $0.leading.equalTo(self.nameLabel)
+            $0.leading.trailing.equalTo(self.nameLabel)
             $0.top.equalTo(self.nameLabel.snp.bottom).offset(4)
+            $0.bottom.equalTo(self.descLabel.snp.top).offset(-16).priority(.low)
         }
         
         self.descLabel.snp.makeConstraints {
             $0.leading.equalTo(self.nameLabel)
             $0.trailing.equalToSuperview().offset(-16)
-            $0.top.equalTo(self.brandLabel.snp.bottom).offset(16)
-            $0.bottom.equalToSuperview().offset(-12)
-        }
-        
-        self.brandLabel.snp.makeConstraints {
-            $0.leading.equalTo(self.nameLabel)
-            $0.top.equalTo(self.nameLabel.snp.bottom).offset(4)
+            $0.bottom.equalToSuperview().offset(-16)
         }
         
         self.priceView.snp.makeConstraints {
-            $0.leading.greaterThanOrEqualTo(self.nameLabel.snp.trailing).offset(8).priority(.low)
-            $0.leading.greaterThanOrEqualTo(self.brandLabel.snp.trailing).offset(8).priority(.low)
             $0.top.equalTo(self.nameLabel.snp.top)
             $0.trailing.equalToSuperview().offset(-16)
             $0.bottom.greaterThanOrEqualTo(self.descLabel.snp.top).offset(-16).priority(.low)
