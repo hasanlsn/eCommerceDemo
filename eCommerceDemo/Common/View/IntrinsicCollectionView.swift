@@ -8,6 +8,7 @@
 import UIKit
 
 class IntrinsicCollectionView: UICollectionView {
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         

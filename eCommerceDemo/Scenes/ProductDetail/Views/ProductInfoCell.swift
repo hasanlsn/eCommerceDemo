@@ -45,6 +45,7 @@ class ProductInfoCell: BaseTableViewCell {
     
     private lazy var priceView: PriceView = {
         let view = PriceView()
+        view.isLarge = true
         return view
     }()
     

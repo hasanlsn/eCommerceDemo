@@ -9,6 +9,22 @@
 import UIKit
 
 class PriceView: UIView {
+    // MARK: - Public Properties -
+    
+    var isLarge: Bool = false {
+        didSet {
+            if self.isLarge == true {
+                self.originalPriceLabel.font = UIFont(.jostRegular, size: 15)
+                self.discountedPriceLabel.font = UIFont(.jostBold, size: 16)
+            } else {
+                self.originalPriceLabel.font = UIFont(.jostRegular, size: 10)
+                self.discountedPriceLabel.font = UIFont(.jostBold, size: 12)
+            }
+        }
+    }
+    
+    //
+    
     // MARK: - Private Properties -
     
     private lazy var innerContainerView: UIView = {

@@ -20,6 +20,7 @@ class PrimaryTextField: UITextField {
         self.commonInit()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         

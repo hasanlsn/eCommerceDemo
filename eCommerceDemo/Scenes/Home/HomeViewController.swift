@@ -16,14 +16,14 @@ protocol HomeDisplayLogic: AnyObject {
 final class HomeViewController: BaseViewController, ViewLifeCycleSenderProtocol {
     // MARK: - IBOutlets -
     
-    var lifeCycleObservedViews: [ViewLifeCycleProtocol] = []
-    
     //
     
     // MARK: - Public Properties -
     
     var interactor: HomeBusinessLogic?
     var router: (NSObjectProtocol & HomeRoutingLogic & HomeDataPassing)?
+    
+    var lifeCycleObservedViews: [ViewLifeCycleProtocol] = []
     
     //
     
@@ -188,6 +188,8 @@ extension HomeViewController: AuthViewDelegate {
                                completionLeft: nil)
         { [weak self] in
             self?.interactor?.userDidLogout()
+            
+            self?.lifeCycleObservedViews.reloadAll()
         }
     }
 }
