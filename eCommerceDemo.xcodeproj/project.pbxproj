@@ -380,6 +380,7 @@
 		161E403E2B0F7A090007D793 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				16C30A3A2B176E6D00DB8FA3 /* Caching */,
 				161E40402B0F7B110007D793 /* Service */,
 				161E403F2B0F7A5B0007D793 /* Endpoint */,
 			);
@@ -401,7 +402,6 @@
 		161E40402B0F7B110007D793 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				16C30A3A2B176E6D00DB8FA3 /* Caching */,
 				161E40432B0F7B240007D793 /* HEndPointType.swift */,
 				161E40442B0F7B240007D793 /* HNetworkError.swift */,
 				161E40422B0F7B240007D793 /* HNetworkLogger.swift */,
