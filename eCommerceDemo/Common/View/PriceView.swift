@@ -103,7 +103,8 @@ class PriceView: UIView {
         }
         
         self.leaningLineView.snp.makeConstraints {
-            $0.trailing.leading.top.bottom.equalToSuperview()
+            $0.trailing.leading.equalToSuperview()
+            $0.top.bottom.equalToSuperview().inset(3)
         }
         
         self.originalPriceLabel.snp.makeConstraints {

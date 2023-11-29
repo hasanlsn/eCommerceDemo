@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct BrandBannersResponseModel: Decodable {
+struct BrandBannersResponseModel: Codable {
     let content: [BrandBannerItemModel]?
 }
 
-struct BrandBannerItemModel: Decodable {
+struct BrandBannerItemModel: Codable {
     let title: String?
     let description: String?
     let url: String?

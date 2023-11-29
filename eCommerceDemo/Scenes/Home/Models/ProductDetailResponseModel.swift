@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ProductDetailResponseModel: Decodable {
+struct ProductDetailResponseModel: Codable {
     let product: ProductModel?
     let prices: ProductPriceModel?
 }

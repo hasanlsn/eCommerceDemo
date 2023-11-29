@@ -10,7 +10,7 @@ import AnyFormatKit
 
 struct HConstants {
     static let API_HOST_DEV = "demo5416316.mockable.io"
-    static let API_URL_DEV = "https:\(HConstants.API_HOST_DEV)"
+    static let API_URL_DEV = "https://\(HConstants.API_HOST_DEV)"
     
     struct Keychain {
         static var LOGIN_INFO_KEY = "LOGIN_INFO_KEY"

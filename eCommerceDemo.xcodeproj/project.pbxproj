@@ -93,6 +93,9 @@
 		169BC7082B12798700348814 /* ProductInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169BC7012B12798700348814 /* ProductInfoViewController.swift */; };
 		169BC7092B12798700348814 /* ProductInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169BC7022B12798700348814 /* ProductInfoInteractor.swift */; };
 		169BC70C2B128AA200348814 /* PrimarySegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169BC70B2B128AA200348814 /* PrimarySegmentedControl.swift */; };
+		16C30A392B173DF900DB8FA3 /* HRequestCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C30A382B173DF900DB8FA3 /* HRequestCacher.swift */; };
+		16C30A3C2B176E8400DB8FA3 /* CachingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C30A3B2B176E8400DB8FA3 /* CachingProtocol.swift */; };
+		16C30A3F2B176EC100DB8FA3 /* ExpirableCachedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C30A3E2B176EC100DB8FA3 /* ExpirableCachedResponse.swift */; };
 		16C6A5062B10FA79004ACE5C /* ProductOffersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C6A5052B10FA79004ACE5C /* ProductOffersView.swift */; };
 		16C6A5082B10FB1B004ACE5C /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C6A5072B10FB1B004ACE5C /* CategoriesView.swift */; };
 		16C6A50B2B10FF94004ACE5C /* ViewLifeCycleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C6A50A2B10FF94004ACE5C /* ViewLifeCycleProtocol.swift */; };
@@ -243,6 +246,9 @@
 		169BC7012B12798700348814 /* ProductInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoViewController.swift; sourceTree = "<group>"; };
 		169BC7022B12798700348814 /* ProductInfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoInteractor.swift; sourceTree = "<group>"; };
 		169BC70B2B128AA200348814 /* PrimarySegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimarySegmentedControl.swift; sourceTree = "<group>"; };
+		16C30A382B173DF900DB8FA3 /* HRequestCacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRequestCacher.swift; sourceTree = "<group>"; };
+		16C30A3B2B176E8400DB8FA3 /* CachingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachingProtocol.swift; sourceTree = "<group>"; };
+		16C30A3E2B176EC100DB8FA3 /* ExpirableCachedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirableCachedResponse.swift; sourceTree = "<group>"; };
 		16C6A5052B10FA79004ACE5C /* ProductOffersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductOffersView.swift; sourceTree = "<group>"; };
 		16C6A5072B10FB1B004ACE5C /* CategoriesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
 		16C6A50A2B10FF94004ACE5C /* ViewLifeCycleProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLifeCycleProtocol.swift; sourceTree = "<group>"; };
@@ -395,6 +401,7 @@
 		161E40402B0F7B110007D793 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				16C30A3A2B176E6D00DB8FA3 /* Caching */,
 				161E40432B0F7B240007D793 /* HEndPointType.swift */,
 				161E40442B0F7B240007D793 /* HNetworkError.swift */,
 				161E40422B0F7B240007D793 /* HNetworkLogger.swift */,
@@ -583,6 +590,24 @@
 				1627DA7A2B1357CB0042FAEF /* ProductInfo */,
 			);
 			path = Child;
+			sourceTree = "<group>";
+		};
+		16C30A3A2B176E6D00DB8FA3 /* Caching */ = {
+			isa = PBXGroup;
+			children = (
+				16C30A3D2B176EB900DB8FA3 /* HRequestCacher */,
+				16C30A3B2B176E8400DB8FA3 /* CachingProtocol.swift */,
+			);
+			path = Caching;
+			sourceTree = "<group>";
+		};
+		16C30A3D2B176EB900DB8FA3 /* HRequestCacher */ = {
+			isa = PBXGroup;
+			children = (
+				16C30A382B173DF900DB8FA3 /* HRequestCacher.swift */,
+				16C30A3E2B176EC100DB8FA3 /* ExpirableCachedResponse.swift */,
+			);
+			path = HRequestCacher;
 			sourceTree = "<group>";
 		};
 		16C6A5092B10FB20004ACE5C /* Components */ = {
@@ -939,6 +964,7 @@
 				161E40862B0FA1140007D793 /* ProductDetailResponseModel.swift in Sources */,
 				161E404A2B0F7B240007D793 /* HNetworkError.swift in Sources */,
 				16C6A5652B122715004ACE5C /* UITableViewExt.swift in Sources */,
+				16C30A392B173DF900DB8FA3 /* HRequestCacher.swift in Sources */,
 				1627DA8E2B135F060042FAEF /* ProductNutritionHeaderView.swift in Sources */,
 				161E40732B0F904F0007D793 /* HomeRouter.swift in Sources */,
 				16C6A5362B114E50004ACE5C /* BaseViewController.swift in Sources */,
@@ -965,6 +991,7 @@
 				161E40722B0F904F0007D793 /* HomeWorker.swift in Sources */,
 				1627DA9A2B1372C60042FAEF /* NavigationBackView.swift in Sources */,
 				16C6A5692B126847004ACE5C /* ProductInfoCell.swift in Sources */,
+				16C30A3C2B176E8400DB8FA3 /* CachingProtocol.swift in Sources */,
 				161E40712B0F904F0007D793 /* HomePresenter.swift in Sources */,
 				1627DA942B1366BE0042FAEF /* UIViewControllerExt.swift in Sources */,
 				169BC7042B12798700348814 /* ProductInfoPresenter.swift in Sources */,
@@ -976,6 +1003,7 @@
 				161E40CC2B0FD6E70007D793 /* UIFontExt.swift in Sources */,
 				16C6A5582B12203A004ACE5C /* ProductDetailPresenter.swift in Sources */,
 				16F0826B2B1511060073F888 /* UIApplicationExt.swift in Sources */,
+				16C30A3F2B176EC100DB8FA3 /* ExpirableCachedResponse.swift in Sources */,
 				16C6A5632B1225EB004ACE5C /* ImageCarouselItemCell.swift in Sources */,
 				161E40492B0F7B240007D793 /* HEndPointType.swift in Sources */,
 				161E404B2B0F7B240007D793 /* HNetworkManager.swift in Sources */,

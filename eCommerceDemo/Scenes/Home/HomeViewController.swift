@@ -67,6 +67,12 @@ final class HomeViewController: BaseViewController, ViewLifeCycleSenderProtocol 
         return walletView
     }()
     
+    private lazy var refreshControl: UIRefreshControl = {
+       let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.handleRefresh), for: .valueChanged)
+        return refreshControl
+    }()
+    
     //
     
     // MARK: - Object lifecycle -
@@ -123,6 +129,8 @@ final class HomeViewController: BaseViewController, ViewLifeCycleSenderProtocol 
     private func prepareViews() {
         self.view.backgroundColor = .white
         
+        self.containerScrollView.refreshControl = self.refreshControl
+        
         let leftView = UIBarButtonItem(customView: self.authView)
         self.navigationItem.leftBarButtonItem = leftView
         
@@ -152,6 +160,12 @@ final class HomeViewController: BaseViewController, ViewLifeCycleSenderProtocol 
     
     // MARK: - IBActions -
     
+    @objc
+    private func handleRefresh() {
+        self.lifeCycleObservedViews.reloadAll()
+        self.refreshControl.endRefreshing()
+    }
+    
     //
 }
 
@@ -168,6 +182,10 @@ extension HomeViewController: HomeDisplayLogic {
         
         self.authView.updateAuthInfo(isLoggedIn: viewModel.isLoggedIn,
                                      nameAndSurname: viewModel.nameAndSurname)
+        
+        self.walletView.updateAuthInfo(isLoggedIn: viewModel.isLoggedIn)
+        
+        self.lifeCycleObservedViews.reloadAll()
     }
 }
 
@@ -188,8 +206,6 @@ extension HomeViewController: AuthViewDelegate {
                                completionLeft: nil)
         { [weak self] in
             self?.interactor?.userDidLogout()
-            
-            self?.lifeCycleObservedViews.reloadAll()
         }
     }
 }
@@ -198,8 +214,6 @@ extension HomeViewController: LoginViewControllerDelegate {
     func userDidLogin(_ viewController: LoginViewController) {
         viewController.dismiss(animated: true) { [weak self] in
             self?.interactor?.userDidLogin()
-            
-            self?.lifeCycleObservedViews.reloadAll()
         }
     }
 }

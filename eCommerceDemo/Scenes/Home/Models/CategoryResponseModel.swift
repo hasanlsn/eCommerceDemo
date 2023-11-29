@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct CategoriesResponseModel: Decodable {
+struct CategoriesResponseModel: Codable {
     let content: [CategoryItemModel]?
 }
 
-struct CategoryItemModel: Decodable {
+struct CategoryItemModel: Codable {
     let title: String?
     let url: String?
     let images: [ImageItemModel]?
 }
 
-struct ImageItemModel: Decodable {
+struct ImageItemModel: Codable {
     let url: URL?
 }

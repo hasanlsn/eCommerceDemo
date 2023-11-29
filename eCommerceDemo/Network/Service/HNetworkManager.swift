@@ -35,12 +35,31 @@ struct HNetworkManager {
         return manager
     }()
     
-    func sendRequest<T: Decodable>(with endpoint: HEndpointType, completion: RequestCompletionBlock<T>) {
+    func sendRequest<T: Codable>(with endpoint: HEndpointType, completion: RequestCompletionBlock<T>) {
         let request = self.buildRequest(from: endpoint)
+        
+        // check cache
+        if let response = HRequestCacher.shared.getEntry(key: request),
+           let model = T.createWith(data: response.data) {
+            completion?(.success(model))
+            return
+        }
+        //
+        
         HNetworkManager.APIManager.request(request)
             .responseDecodable(of: T.self, completionHandler: { response in
                 switch response.result {
                 case .success(let result):
+                    // add to cache
+                    let request = response.request
+                    let resp = response.response
+                    let data = response.data
+                    let responseItem = ExpirableCachedResponse(data: data,
+                                                               response: resp,
+                                                               storagePolicy: .allowed)
+                    HRequestCacher.shared.addEntry(key: request, value: responseItem)
+                    //
+                    
                     completion?(.success(result))
                 case .failure(let error):
                     completion?(.failure(.custom(message: error.localizedDescription)))

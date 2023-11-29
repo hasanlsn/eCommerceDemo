@@ -17,6 +17,10 @@ extension Encodable {
             return nil
         }
     }
+    
+    func toJSON() -> [AnyHashable: Any]? {
+        return self.toJSONString()?.toDictionary()
+    }
 }
 
 extension Decodable {
@@ -25,6 +29,20 @@ extension Decodable {
             let data = try JSONSerialization.data(withJSONObject: JSON)
             let decodedObject = try JSONDecoder().decode(self, from: data)
             return decodedObject
+        } catch {
+            return nil
+        }
+    }
+    
+    static func createWith(data: Data?) -> Self? {
+        guard let data else {
+            return nil
+        }
+        
+        do {
+            let decoder = JSONDecoder()
+            let model = try decoder.decode(self, from: data)
+            return model
         } catch {
             return nil
         }

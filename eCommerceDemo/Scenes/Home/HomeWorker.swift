@@ -11,6 +11,7 @@ import Foundation
 protocol HomeWorkProtocol {
     func getLoginInfo() -> LoginResponseModel?
     func removeLoginInfo()
+    func emptyRequestCache()
 }
 
 final class HomeWorker: HomeWorkProtocol {
@@ -26,5 +27,9 @@ final class HomeWorker: HomeWorkProtocol {
     
     func removeLoginInfo() {
         HKeychainManager.removeItem(forKey: HConstants.Keychain.LOGIN_INFO_KEY)
+    }
+    
+    func emptyRequestCache() {
+        HRequestCacher.shared.emptyCache()
     }
 }

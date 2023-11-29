@@ -55,6 +55,8 @@ class WalletView: UIView {
     }()
     
     private var walletResponseModel: MyWalletResponseModel?
+    private var isLoggedIn: Bool = false
+    private var didAnimateOnce: Bool = false
     
     //
     
@@ -121,13 +123,23 @@ class WalletView: UIView {
     //
     
     private func getMyWallet() {
-        self.transform = CGAffineTransform(translationX: 200, y: 0)
+        if self.isLoggedIn == false {
+            return
+        }
+        
+        if didAnimateOnce == false {
+            self.transform = CGAffineTransform(translationX: 200, y: 0)
+        }
         
         HNetworkManager.shared.sendRequest(with: ProfileEndpoint.getMyWallet)
         { [weak self] (result: HNetworkResult<MyWalletResponseModel>) in
-            UIView.animate(withDuration: 0.5) {
-                self?.transform = .identity
+            if self?.didAnimateOnce == false {
+                UIView.animate(withDuration: 0.5) {
+                    self?.transform = .identity
+                }
             }
+            
+            self?.didAnimateOnce = true
             
             switch result {
             case .success(let walletResponseModel):
@@ -141,6 +153,14 @@ class WalletView: UIView {
             case .failure(let error):
                 print(error.localizedDescription)
             }
+        }
+    }
+    
+    func updateAuthInfo(isLoggedIn: Bool) {
+        self.isLoggedIn = isLoggedIn
+        
+        if self.isLoggedIn == false {
+            self.walletResponseModel = nil
         }
     }
 }

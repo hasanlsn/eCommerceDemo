@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ProductModel: Decodable {
+struct ProductModel: Codable {
     let id: String?
     let name: String?
     let description: String?
@@ -18,25 +18,25 @@ struct ProductModel: Decodable {
     let nutritionFacts: [ProductNutritionFactItemModel]?
 }
 
-struct ProductPriceModel: Decodable {
+struct ProductPriceModel: Codable {
     let discounted: ProductPriceItemModel?
     let original: ProductPriceItemModel?
 }
 
-struct ProductPriceItemModel: Decodable {
+struct ProductPriceItemModel: Codable {
     let text: String?
     let value: Double?
     let currency: String?
     let symbol: String?
 }
 
-struct ProductBrandModel: Decodable {
+struct ProductBrandModel: Codable {
     let id: Int?
     let code: String?
     let name: String?
 }
 
-struct ProductNutritionFactItemModel: Decodable {
+struct ProductNutritionFactItemModel: Codable {
     let label: String?
     let value: Int?
 }

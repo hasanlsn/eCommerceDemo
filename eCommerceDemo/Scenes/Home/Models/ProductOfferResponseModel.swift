@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct ProductOffersResponseModel: Decodable {
+struct ProductOffersResponseModel: Codable {
     let content: [ProductOfferItemModel]?
 }
 
-struct ProductOfferItemModel: Decodable {
+struct ProductOfferItemModel: Codable {
     let title: String?
     let serviceType: String?
     let bannerTitleColor: String?
@@ -19,7 +19,7 @@ struct ProductOfferItemModel: Decodable {
     let skuOffers: [SkuOfferModel]?
 }
 
-struct SkuOfferModel: Decodable {
+struct SkuOfferModel: Codable {
     let id: String?
     let product: ProductModel?
     let prices: ProductPriceModel?

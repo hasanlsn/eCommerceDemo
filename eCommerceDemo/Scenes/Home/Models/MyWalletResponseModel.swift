@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct MyWalletResponseModel: Decodable {
+struct MyWalletResponseModel: Codable {
     let walletId: String?
     let walletNo: String?
     let balance: MyWalletBalanceModel?
 }
 
-struct MyWalletBalanceModel: Decodable {
+struct MyWalletBalanceModel: Codable {
     let value: Double?
     let text: String?
     let currency: String?

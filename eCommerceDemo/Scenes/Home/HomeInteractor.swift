@@ -29,10 +29,13 @@ extension HomeInteractor: HomeBusinessLogic, HomeDataStore {
     }
     
     func userDidLogin() {
+        self.worker.emptyRequestCache()
+        
         self.checkLogin()
     }
     
     func userDidLogout() {
+        self.worker.emptyRequestCache()
         self.worker.removeLoginInfo()
         
         self.checkLogin()
